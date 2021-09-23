@@ -11,6 +11,41 @@ public class MyLL {
 		
 	}
 	
+	public StudentInfo removeFromFront() {
+		if (frontOfList == null) {
+			return null;
+		}
+		else { // list is not empty
+			StudentInfo studentToRemove = frontOfList;
+			frontOfList = studentToRemove.next;  // set front of list to the next list item
+			studentToRemove.next = null; // set the item to remove next to null, so it's not pointing at anything
+			length--;
+			//System.out.println("\n*REMOVED FROM FRONT*");
+			return studentToRemove;
+		}
+	}
+	
+	public StudentInfo removeFromRear() {
+		if (frontOfList == null) {
+			return null;
+		}
+		else {
+			// Find the second last element
+			StudentInfo findSecondLast = frontOfList;
+			for (int i = 1; i < length-1; i++) {
+				findSecondLast = findSecondLast.next;
+			}
+			System.out.println("Second Last: " + findSecondLast.firstName);
+			StudentInfo studentToRemove = findSecondLast.next; // set studentToRemove to last student
+			
+			findSecondLast.next = null; // set second last element to null so it's not pointing to last
+			length--;
+			return studentToRemove;	
+			
+		}
+		
+	}
+	
 	public void addToRear(StudentInfo studentToAdd) {
 		if (frontOfList == null) { // if list is empty just add
 			studentToAdd.next = null;
@@ -20,7 +55,6 @@ public class MyLL {
 		}
 			
 		// multiple items have to "scroll" to end
-		System.out.println("\nScrolling to end: ");
 		StudentInfo currentStudent = frontOfList;
 		
 		while (currentStudent.next != null) {

@@ -1,4 +1,3 @@
-
 public class StudentInfo{
 	public int studentNumber;
 	public String firstName;
