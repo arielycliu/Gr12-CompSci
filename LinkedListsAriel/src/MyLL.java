@@ -35,7 +35,7 @@ public class MyLL {
 			for (int i = 1; i < length-1; i++) {
 				findSecondLast = findSecondLast.next;
 			}
-			System.out.println("Second Last: " + findSecondLast.firstName);
+			//System.out.println("Second Last: " + findSecondLast.firstName);
 			StudentInfo studentToRemove = findSecondLast.next; // set studentToRemove to last student
 			
 			findSecondLast.next = null; // set second last element to null so it's not pointing to last
