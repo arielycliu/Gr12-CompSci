@@ -20,9 +20,9 @@ public class Main {
 		removedItem = theLL.removeFromRear();
 		
 		if (removedItem != null) {
-			System.out.println("Removed: " + removedItem.firstName);
+			System.out.println("\nRemoved: " + removedItem.firstName);
 		} else {
-			System.out.println("CANNOT BE REMOVED, LIST IS EMPTY");
+			System.out.println("\nCANNOT BE REMOVED, LIST IS EMPTY");
 		}
 		
 		theLL.displayList();
