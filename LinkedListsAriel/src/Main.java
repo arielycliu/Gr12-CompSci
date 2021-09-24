@@ -5,27 +5,39 @@ public class Main {
 		MyLL theLL = new MyLL();
 		StudentInfo theStudent;
 		
-		theStudent = new StudentInfo(123456, "Ari", "Liu");		
+		theStudent = new StudentInfo(14353, "Ari", "Liu");		
 		theLL.addToFront(theStudent);
 		
-		theStudent = new StudentInfo(656789, "Jan", "An");
+		theStudent = new StudentInfo(25493402, "Jan", "An");
 		theLL.addToRear(theStudent);
 		
-		theStudent = new StudentInfo(656789, "Pat", "Li");
-		theLL.addToFront(theStudent);
+		theStudent = new StudentInfo(345453, "Pat", "Li");
+		theLL.addToRear(theStudent);
 		
-		theLL.displayList();
+		theStudent = new StudentInfo(345344, "Jojo", "Zou");
+		theLL.addToRear(theStudent);
 		
-		StudentInfo removedItem;
-		removedItem = theLL.removeFromRear();
+		int index = theLL.searchByStudentNumber(345344);
 		
-		if (removedItem != null) {
-			System.out.println("\nRemoved: " + removedItem.firstName);
+		if (index != -1) {
+			System.out.println(theLL.getInfo(index).firstName);
 		} else {
-			System.out.println("\nCANNOT BE REMOVED, LIST IS EMPTY");
+			System.out.println("NUMBER NOT FOUND");
 		}
 		
-		theLL.displayList();
+
+		//theLL.displayList();
+		
+//		StudentInfo removedItem;
+//		removedItem = theLL.removeFromRear();
+//		
+//		if (removedItem != null) {
+//			System.out.println("\nRemoved: " + removedItem.firstName);
+//		} else {
+//			System.out.println("\nCANNOT BE REMOVED, LIST IS EMPTY");
+//		}
+//		
+//		theLL.displayList();
 		
 	}
 }

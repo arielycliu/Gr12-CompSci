@@ -11,6 +11,29 @@ public class MyLL {
 		
 	}
 	
+	public int searchByStudentNumber(int number) {
+		StudentInfo currentStudent = frontOfList;
+		for (int i = 0; i <= length-1; i++) { // loop thru list
+			if (currentStudent.studentNumber == number) {   // look for studentNumber match
+				System.out.println("StudentNumber found at: " + i); 
+				return i;
+			}
+			currentStudent = currentStudent.next;
+		}
+		System.out.println("Name not found");
+		return -1;
+	}
+	
+	public StudentInfo getInfo(int index) {
+		StudentInfo currentStudent = frontOfList;
+		for (int i = 0; i < index; i++) {
+			currentStudent = currentStudent.next; // loop to the indicated index
+		}
+		return currentStudent;  // return element
+	}
+	
+	
+	
 	public StudentInfo removeFromFront() {
 		if (frontOfList == null) {
 			return null;
@@ -56,16 +79,14 @@ public class MyLL {
 			
 		// multiple items have to "scroll" to end
 		StudentInfo currentStudent = frontOfList;
-		
 		while (currentStudent.next != null) {
-			System.out.println(currentStudent.firstName);
 			currentStudent = currentStudent.next;
 		}
 		
 		// when is finds the last element add it to the rear
 		currentStudent.next = studentToAdd;
 		length++;
-		System.out.println("\n*ADDED TO REAR*");
+		//System.out.println("\n*ADDED TO REAR*");
 		return;
 			
 	}
@@ -75,7 +96,7 @@ public class MyLL {
 			studentToAdd.next = null; //just in case kay
 			frontOfList = studentToAdd;
 			length = 1;
-			System.out.println("\n*ADDED TO FRONT*");
+			//System.out.println("\n*ADDED TO FRONT*");
 			return;
 					
 		}
