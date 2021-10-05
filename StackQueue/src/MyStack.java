@@ -56,5 +56,6 @@ public class MyStack {
 		return;
 	}
 	// pop - remove item from the top of the stack - return ref value
+	// peak - look at the item at the top of the stack - return ref value
 	
 }
