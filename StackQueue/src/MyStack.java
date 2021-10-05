@@ -27,11 +27,10 @@ public class MyStack {
 	// displayStack - print out each student
 	public void displayStack() {
 		if (top == null) {  // if the list is empty
-			System.out.println("\nEMPTY LIST");
+			System.out.println("empty");
 			return;
 		}
 		// else: the list must have stuff inside
-		System.out.println("\nWe have " + numInStack + " elements: ");
 		StudentInfo currentStudent = top;
 		
 		// loop thru to print names
@@ -56,6 +55,24 @@ public class MyStack {
 		return;
 	}
 	// pop - remove item from the top of the stack - return ref value
+	public StudentInfo pop() {
+		if (top == null) {  // if the list is empty
+			return null;
+		}
+		// else: the list must have stuff in it 
+		StudentInfo studentToRemove = top; 
+		top = studentToRemove.next; // set the second plate to the top
+		studentToRemove.next = null; // make sure it's not pointing to anything since it won't be a part of the list anymore
+		numInStack--;
+		return studentToRemove;
+	}
 	// peak - look at the item at the top of the stack - return ref value
-	
+	public StudentInfo peak() {
+		if (top == null) {  // if the list is empty
+			return null;
+		}
+		// else: list has stuff
+		StudentInfo studentAtTop = top;
+		return studentAtTop;
+	}
 }
