@@ -26,7 +26,7 @@ public class MyQueue {
 		if (front == null) {  // if the list is empty
 			System.out.println("empty");
 			return;
-		}
+		} 
 		// else: the list must have stuff inside
 		StudentInfo currentStudent = front;
 		

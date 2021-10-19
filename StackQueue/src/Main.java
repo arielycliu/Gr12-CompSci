@@ -37,31 +37,31 @@ public class Main {
 		System.out.println("\nAbout to display the stack (top to bottom)!");
 		theS.displayStack();
 	// QUEUE
-			System.out.println("\n\nTESTING THE QUEUE STUFF");
-			
-			
-			System.out.println("\nAbout to display the queue (front to rear)!");
-			theQ.displayQueue();
-			
-			
-			someStudent = new StudentInfo(111111, "Daffy", "Duck", 20, 10);
-			theQ.enqueue(someStudent);
-			
-			System.out.println("\nAbout to display the queue (front to rear)!");
-			theQ.displayQueue();
-			
-			
-			removedStudent = theQ.dequeue();
-			if (removedStudent == null) {
-				System.out.println("\ndequeued item is null");
-			}
-			else {
-				System.out.println("\ndequeued item is " + removedStudent.firstName);
-				System.out.println("attribute next has value " + removedStudent.next);
-			}
-			
-			System.out.println("\nAbout to display the queue (front to rear)!");
-			theQ.displayQueue();
+		System.out.println("\n\nTESTING THE QUEUE STUFF");
+		
+		
+		System.out.println("\nAbout to display the queue (front to rear)!");
+		theQ.displayQueue();
+		
+		
+		someStudent = new StudentInfo(111111, "Daffy", "Duck", 20, 10);
+		theQ.enqueue(someStudent);
+		
+		System.out.println("\nAbout to display the queue (front to rear)!");
+		theQ.displayQueue();
+		
+		
+		removedStudent = theQ.dequeue();
+		if (removedStudent == null) {
+			System.out.println("\ndequeued item is null");
+		}
+		else {
+			System.out.println("\ndequeued item is " + removedStudent.firstName);
+			System.out.println("attribute next has value " + removedStudent.next);
+		}
+		
+		System.out.println("\nAbout to display the queue (front to rear)!");
+		theQ.displayQueue();
 		
 	}
 }
