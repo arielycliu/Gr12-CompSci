@@ -20,23 +20,23 @@ public class MyBinaryTree {
 		}
 		// the tree is not empty
 		if (studentToAdd.studentNumber < currentNode.studentNumber) {
-			if (currentNode.leftNode == null) { // left side
-				currentNode.leftNode = studentToAdd;
+			if (currentNode.left == null) { // left side
+				currentNode.left = studentToAdd;
 				numInTree++;
 				return;
 			}
 			// otherwise the left side is not null and we need to call recursion
-			addToTree(currentNode.leftNode, studentToAdd);
+			addToTree(currentNode.left, studentToAdd);
 		}
 		// studentToAdd.studentNumber is >= currentNode.studentNumber
-		else {
-			if (currentNode.rightNode == null) { // right side 
-				currentNode.rightNode = studentToAdd;
+		if (studentToAdd.studentNumber >= currentNode.studentNumber) {
+			if (currentNode.right == null) { // right side 
+				currentNode.right = studentToAdd;
 				numInTree++;
 				return;
 			}
 			// otherwise call recursion to go down one more layer
-			addToTree(currentNode.rightNode, studentToAdd);
+			addToTree(currentNode.right, studentToAdd);
 		}
 	}
 	
@@ -53,12 +53,11 @@ public class MyBinaryTree {
 		}
 		// currentNode must have stuff
 		// Process stuff
-		System.out.println("sN: " + currentNode.studentNumber);
-		System.out.println("fN: " + currentNode.firstName);
+		System.out.println(currentNode.studentNumber);
 		
 		// Traversals
-		preorder(currentNode.leftNode);
-		preorder(currentNode.rightNode);
+		preorder(currentNode.left);
+		preorder(currentNode.right);
 		
 	}
 	
@@ -76,15 +75,13 @@ public class MyBinaryTree {
 		// else currentNode must have stuff
 		
 		// Left traversal
-		preorder(currentNode.leftNode);
+		inorder(currentNode.left);
 		
 		// Process stuff
-		System.out.println("sN: " + currentNode.studentNumber);
-		System.out.println("fN: " + currentNode.firstName);
+		System.out.println(currentNode.studentNumber);
 		
 		// Right traversal
-		preorder(currentNode.rightNode);
-		
+		inorder(currentNode.right);
 	}
 	
 	
@@ -103,14 +100,11 @@ public class MyBinaryTree {
 		// else currentNode must have stuff
 		
 		// Traversals
-		preorder(currentNode.leftNode);
-		preorder(currentNode.rightNode);
+		postorder(currentNode.left);
+		postorder(currentNode.right);
 		
 		// Process stuff
-		System.out.println("sN: " + currentNode.studentNumber);
-		System.out.println("fN: " + currentNode.firstName);
-		
-		
+		System.out.println(currentNode.studentNumber);
 		
 	}
 	

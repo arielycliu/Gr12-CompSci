@@ -6,8 +6,8 @@ public class StudentInfo {
 	public String lastName;
 	public double height; // in cm
 	public double weight; // in kg
-	public StudentInfo leftNode;
-	public StudentInfo rightNode;
+	public StudentInfo left;
+	public StudentInfo right;
 	
 	// Constructor
 	public StudentInfo() {
@@ -15,8 +15,8 @@ public class StudentInfo {
 		firstName = "a";
 		height = -1.0;
 		weight = -1.0;
-		leftNode = null;
-		rightNode = null;
+		left = null;
+		right = null;
 	}
 	
 	public StudentInfo(int studentNumber, String firstName, String lastName, double height, double weight) {
@@ -25,7 +25,7 @@ public class StudentInfo {
 		this.lastName = lastName;
 		this.height = height;
 		this.weight = weight;
-		leftNode = null;
-		rightNode = null;
+		left = null;
+		right = null;
 	}
 }
