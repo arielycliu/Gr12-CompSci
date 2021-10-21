@@ -18,7 +18,33 @@ public class TestBinaryTree {
 		
 		someStudent = new StudentInfo(10, "Bugs", "Bunny", 33, 44);
 		theTree.addToTree(theTree.root, someStudent);
+		
+		someStudent = new StudentInfo(1, "Pat", "Bird", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
 
+		someStudent = new StudentInfo(12, "Jan", "Cat", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+		
+		someStudent = new StudentInfo(20, "Ariel", "Bunny", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+		
+		someStudent = new StudentInfo(23, "Tweety", "Bird", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+
+		someStudent = new StudentInfo(7, "Sylvester", "Cat", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+		
+		someStudent = new StudentInfo(8, "Bugs", "Bunny", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+		
+		someStudent = new StudentInfo(9, "Pat", "Bird", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+
+		someStudent = new StudentInfo(11, "Jan", "Cat", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
+		
+		someStudent = new StudentInfo(18, "Ariel", "Bunny", 33, 44);
+		theTree.addToTree(theTree.root, someStudent);
 		
 
 		// Do the traversals!
