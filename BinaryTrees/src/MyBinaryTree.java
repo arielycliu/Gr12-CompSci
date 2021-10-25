@@ -1,4 +1,3 @@
-
 public class MyBinaryTree {
 	// Attributes
 	public int numInTree;
@@ -40,11 +39,10 @@ public class MyBinaryTree {
 		}
 	}
 	
-//	Preorder traversal
-//	1. Process the current node
-//		a. Print out student number
-//	2. Do a preorder traversal of the left subtree of current node
-//	3. Do a preorder traversal of the right subtree of the current node
+	//	Preorder traversal
+	//	1. Process the current node -> Print out student number
+	//	2. Do a preorder traversal of the left subtree of current node
+	//	3. Do a preorder traversal of the right subtree of the current node
 
 	public void preorder(StudentInfo currentNode) {
 		// Base case
@@ -61,12 +59,11 @@ public class MyBinaryTree {
 		
 	}
 	
-//	Inorder traversal
-//	1. Inorder traversal of LST of current node
-//	2. Process current node
-//	3. Inorder traversal of RST of current node
-//	- Will end up listing the nodes inorder
-//		Ascending order by key value
+	//	Inorder traversal
+	//	1. Inorder traversal of LST of current node
+	//	2. Process current node
+	//	3. Inorder traversal of RST of current node
+	//	Will end up listing the nodes in ascending order by key value
 
 	public void inorder(StudentInfo currentNode) {
 		if (currentNode == null) { // Base Case
@@ -86,12 +83,11 @@ public class MyBinaryTree {
 	
 	
 
-//	Postorder traversal
-//		1. Postorder of LST of current node
-//		2. Postorder of RST (right side tree) of current node
-//		3. Process current node
-//		- End with root of tree
-//	Go down all the way first then print
+	//	Postorder traversal
+	//	1. Postorder of LST of current node
+	//	2. Postorder of RST (right side tree) of current node
+	//	3. Process current node
+	//	Go down all the way first then print heading back out
 	
 	public void postorder(StudentInfo currentNode) {
 		if (currentNode == null) { // Base Case
