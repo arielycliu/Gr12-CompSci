@@ -12,14 +12,14 @@ public class MyBinaryTree {
 	// Add to Tree
 	public void addToTree(StudentInfo currentNode, StudentInfo studentToAdd) {
 		if (root == null) {
-			// tree is complete empty so this one is the root
+			// tree is complete empty so this student is the root
 			root = studentToAdd;
 			numInTree = 1;
 			return;
 		}
 		// the tree is not empty
 		if (studentToAdd.studentNumber < currentNode.studentNumber) {
-			if (currentNode.left == null) { // left side
+			if (currentNode.left == null) { // left side empty
 				currentNode.left = studentToAdd;
 				numInTree++;
 				return;
@@ -27,9 +27,9 @@ public class MyBinaryTree {
 			// otherwise the left side is not null and we need to call recursion
 			addToTree(currentNode.left, studentToAdd);
 		}
-		// studentToAdd.studentNumber is >= currentNode.studentNumber
+		// If our student number is >= currentNode.studentNumber
 		if (studentToAdd.studentNumber >= currentNode.studentNumber) {
-			if (currentNode.right == null) { // right side 
+			if (currentNode.right == null) { // right side empty
 				currentNode.right = studentToAdd;
 				numInTree++;
 				return;
@@ -49,11 +49,10 @@ public class MyBinaryTree {
 		if (currentNode == null) {
 			return;
 		}
-		// currentNode must have stuff
-		// Process stuff
-		System.out.println(currentNode.studentNumber);
+		// else currentNode must have stuff
+		System.out.println(currentNode.studentNumber); // process the node
 		
-		// Traversals
+		// Call recursive traversals
 		preorder(currentNode.left);
 		preorder(currentNode.right);
 		
@@ -70,18 +69,12 @@ public class MyBinaryTree {
 			return;
 		}
 		// else currentNode must have stuff
+		inorder(currentNode.left); // Left traversal
 		
-		// Left traversal
-		inorder(currentNode.left);
+		System.out.println(currentNode.studentNumber); // Process node
 		
-		// Process stuff
-		System.out.println(currentNode.studentNumber);
-		
-		// Right traversal
-		inorder(currentNode.right);
+		inorder(currentNode.right); // Right traversal
 	}
-	
-	
 
 	//	Postorder traversal
 	//	1. Postorder of LST of current node
@@ -99,8 +92,7 @@ public class MyBinaryTree {
 		postorder(currentNode.left);
 		postorder(currentNode.right);
 		
-		// Process stuff
-		System.out.println(currentNode.studentNumber);
+		System.out.println(currentNode.studentNumber); // Process stuff
 		
 	}
 	
