@@ -9,8 +9,8 @@ public class TestHashTable {
 		
 		MyHashTable theHT = new MyHashTable(10);  // Open hash table with 10 buckets
 		
-//		theHT.displayTable();
-//		
+		theHT.displayTable();
+		
 		someStudent = new StudentInfo(123456, "Bugs", "Bunny", 40, 40);
 		theHT.addToTable(someStudent);
 		
@@ -19,8 +19,37 @@ public class TestHashTable {
 		
 		someStudent = new StudentInfo(464646, "Daffy", "Duck", 40, 40);
 		theHT.addToTable(someStudent);
+		
+		someStudent = new StudentInfo(678904, "Pat", "Duck", 40, 40);
+		theHT.addToTable(someStudent);
+		
+		someStudent = new StudentInfo(521432, "Jan", "Duck", 40, 40);
+		theHT.addToTable(someStudent);
+		
+		someStudent = new StudentInfo(563452, "Ari", "Duck", 40, 40);
+		theHT.addToTable(someStudent);
 
-//		theHT.displayTable();
+		theHT.displayTable();
+		someStudent = theHT.getFromTable(678904);
+		
+		if (someStudent != null) {
+			System.out.println(someStudent.firstName);
+		}
+		else {
+			System.out.println(someStudent);
+		}
+		
+		someStudent = theHT.removeFromTable(521432);
+		
+		if (someStudent != null) {
+			System.out.println(someStudent.firstName);
+		}
+		else {
+			System.out.println(someStudent);
+		}
+		
+		theHT.displayTable();
+		
 
 	}
 
