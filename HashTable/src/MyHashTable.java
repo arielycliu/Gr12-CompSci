@@ -35,7 +35,7 @@ public class MyHashTable {
 
 	public void addToTable(StudentInfo theStudent) {
 		// Add the student referenced by theStudent to the hash table.
-		int bucketNum = calcBucket(theStudent.studentNumber);
+		int bucketNum = calcBucket(theStudent.studentNumber); // find which bucket to place it in
 		buckets[bucketNum].add(theStudent);
 		return;
 		
