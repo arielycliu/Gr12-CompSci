@@ -5,7 +5,7 @@ public class FTE extends EmployeeInfo {
 	
 	public double salary;
 	
-	public FTE(int eN, String fN, String lN, int g, int wL, double dR, int s) {
+	public FTE(int eN, String fN, String lN, int g, int wL, double dR, double s) {
 		super(eN, fN, lN, g, wL, dR); // call constructor for employeeInfo
 		salary = s;
 	}
