@@ -31,12 +31,12 @@ public class TestHashTable {
 		}
 		else {
 			System.out.println("Removed " + removedEmp.firstName);
-			if (removedEmp instanceof FTE) {
+			if (removedEmp instanceof FTE) { // check if it's an instance of full time or part time
 				FTE removedFTE = (FTE) removedEmp; // casting the removedEmp ref value as a FTE
 				System.out.println("Salary: " + removedFTE.salary);
 				System.out.println("Net annual income: " + removedFTE.calcNetAnnualIncome());
 			}
-			if (removedEmp instanceof PTE) {
+			else if (removedEmp instanceof PTE) {
 				PTE removedPTE = (PTE) removedEmp;  // casting the removedEmp ref val as PTE ref val
 				System.out.println("Hourly wage: " + removedPTE.hourlyWage);
 				System.out.println("Net annual income: " + removedPTE.calcNetAnnualIncome());	
