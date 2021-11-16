@@ -9,11 +9,17 @@
  */
 public class AddNewEmployee extends javax.swing.JFrame {
 
+    private MyHashTable mainHT;  // contains the ref value for theHT of MainJFrame.
+
     /**
      * Creates new form AddNewEmployee
      */
     public AddNewEmployee() {
         initComponents();
+    }
+    
+    public void setMainHT(MyHashTable theRefVal) {
+        mainHT = theRefVal;
     }
 
     /**
@@ -25,21 +31,125 @@ public class AddNewEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        InputTypeEmployee = new javax.swing.JComboBox<>();
+        InputEmNum = new javax.swing.JTextField();
+        InputFirstName = new javax.swing.JTextField();
+        InputLastName = new javax.swing.JTextField();
+        InputGender = new javax.swing.JTextField();
+        InputWorkLoc = new javax.swing.JTextField();
+        InputDeductRate = new javax.swing.JTextField();
+        SubmitButton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("Adding a new employee");
+
+        InputTypeEmployee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Part-time Employee", "Full-time Employee" }));
+        InputTypeEmployee.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputTypeEmployeeActionPerformed(evt);
+            }
+        });
+
+        InputEmNum.setText("Employee Number");
+        InputEmNum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputEmNumActionPerformed(evt);
+            }
+        });
+
+        InputFirstName.setText("First Name");
+
+        InputLastName.setText("Last Name");
+        InputLastName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InputLastNameActionPerformed(evt);
+            }
+        });
+
+        InputGender.setText("Gender");
+
+        InputWorkLoc.setText("Work Location");
+
+        InputDeductRate.setText("Deduct Rate");
+
+        SubmitButton.setText("Submit");
+        SubmitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(InputTypeEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(InputEmNum, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(InputGender, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(InputFirstName, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(InputDeductRate, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(InputLastName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(InputWorkLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(SubmitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(114, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(InputEmNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(InputFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InputLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(InputGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(InputWorkLoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(InputDeductRate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(InputTypeEmployee, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(SubmitButton)
+                .addContainerGap(43, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    private void InputTypeEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputTypeEmployeeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputTypeEmployeeActionPerformed
+
+    private void InputLastNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputLastNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputLastNameActionPerformed
+
+    private void InputEmNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InputEmNumActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_InputEmNumActionPerformed
+
+    private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
+        // TODO add your handling code here:
+        Object employeeType = InputTypeEmployee.getSelectedItem();
+        if (employeeType != null){
+            System.out.println("The person is an " + employeeType);
+        }
+    }//GEN-LAST:event_SubmitButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +187,14 @@ public class AddNewEmployee extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField InputDeductRate;
+    private javax.swing.JTextField InputEmNum;
+    private javax.swing.JTextField InputFirstName;
+    private javax.swing.JTextField InputGender;
+    private javax.swing.JTextField InputLastName;
+    private javax.swing.JComboBox<String> InputTypeEmployee;
+    private javax.swing.JTextField InputWorkLoc;
+    private javax.swing.JButton SubmitButton;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
