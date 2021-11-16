@@ -26,24 +26,44 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="InputTypeEmployee" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" min="-2" pref="207" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="InputEmNum" pref="118" max="32767" attributes="0"/>
-                          <Component id="InputGender" alignment="0" max="32767" attributes="0"/>
-                          <Component id="InputFirstName" alignment="0" max="32767" attributes="0"/>
-                          <Component id="InputDeductRate" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="InputLastName" min="-2" pref="118" max="-2" attributes="0"/>
-                          <Component id="InputWorkLoc" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Component id="jLabel1" min="-2" pref="207" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="InputEmNum" pref="118" max="32767" attributes="0"/>
+                                  <Component id="InputGender" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="InputFirstName" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="InputLastName" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="InputWorkLoc" min="-2" pref="118" max="-2" attributes="0"/>
+                                  <Component id="InputDeductRate" min="-2" pref="118" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="SubmitButton" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
-                  <Component id="SubmitButton" alignment="0" min="-2" pref="106" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="InputTypeEmployee" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ExtraInfoLabel" alignment="0" min="-2" pref="146" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="FTEInputSalary" alignment="0" pref="81" max="32767" attributes="0"/>
+                                  <Component id="PTEInputhW" alignment="0" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="PTEInputhPW" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="PTEInputwPY" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="80" max="32767" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace pref="114" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,7 +73,10 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="InputEmNum" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="InputEmNum" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="InputDeductRate" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="InputFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -65,12 +88,20 @@
                   <Component id="InputWorkLoc" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="InputDeductRate" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="InputTypeEmployee" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="ExtraInfoLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="PTEInputhW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PTEInputhPW" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PTEInputwPY" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="FTEInputSalary" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="9" max="32767" attributes="0"/>
               <Component id="SubmitButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="43" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -140,6 +171,31 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SubmitButtonActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="ExtraInfoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Part Time Employee Info"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PTEInputhW">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hourly Wage"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PTEInputhPW">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hours Per Week"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PTEInputwPY">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Weeks Per Year"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="FTEInputSalary">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Yearly Salary"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>

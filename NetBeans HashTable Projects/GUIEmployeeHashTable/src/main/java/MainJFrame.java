@@ -18,7 +18,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         
-        theHT = new MyHashTable(10); // init hashtables
+        theHT = new MyHashTable(10); // init hashtable with 10 buckets
     }
 
     /**
@@ -77,11 +77,14 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddNewEmployee theAddNewEmployeeWindow = new AddNewEmployee();
         theAddNewEmployeeWindow.setVisible(true);
-        theAddNewEmployeeWindow.setMainHT(theHT);
+        theAddNewEmployeeWindow.setMainHT(theHT); //run setMainHt to move ref main
     }//GEN-LAST:event_AddButtonActionPerformed
 
     private void DisplayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DisplayButtonActionPerformed
         // TODO add your handling code here:
+        DisplayHashTable theDisplayHashTableWindow = new DisplayHashTable();
+        theDisplayHashTableWindow.setVisible(true);
+        theDisplayHashTableWindow.setMainHT(theHT);
     }//GEN-LAST:event_DisplayButtonActionPerformed
 
     /**
