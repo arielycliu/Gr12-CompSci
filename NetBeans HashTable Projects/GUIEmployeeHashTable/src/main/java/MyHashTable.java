@@ -9,6 +9,7 @@ public class MyHashTable {
 	// object holding a reference value pointing to a student.
 
 	public ArrayList<EmployeeInfo>[] buckets;
+        public int numInHashTable;
 
 	
 	// CONSTRUCTOR
@@ -23,10 +24,15 @@ public class MyHashTable {
 		for (int i = 0; i < howManyBuckets; i++) {
 			buckets[i] = new ArrayList();  // Instantiate the ArrayList for bucket i.
 		}
+                numInHashTable = 0;
 	}
 
 
 	// METHODS
+        
+        public int getNumInHashTable() {
+            return numInHashTable;
+	}
 
 	public int calcBucket(int empNumber) {
 		return(empNumber % buckets.length);  // student number modulo number of buckets
@@ -40,6 +46,7 @@ public class MyHashTable {
 		}
 		int bucketNum = calcBucket(theEmp.empNumber); // find which bucket to place it in using it's student number
 		buckets[bucketNum].add(theEmp);
+                numInHashTable++;
 		return;
 	}
 
@@ -54,6 +61,7 @@ public class MyHashTable {
 			if (buckets[bucketNum].get(i).empNumber == empNumber) {     // check if the element in the ArrayList has the same student number
 				EmployeeInfo removedEmployee = buckets[bucketNum].get(i);      // save the student's reference value so we can return it
 				buckets[bucketNum].remove(i);      // remove the student
+                                numInHashTable--;
 				return removedEmployee; // return the student with the matching studentNumber
 			}
 		}
