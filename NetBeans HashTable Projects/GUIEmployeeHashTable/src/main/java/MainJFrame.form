@@ -28,6 +28,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="AddButton" max="32767" attributes="0"/>
                   <Component id="DisplayButton" pref="172" max="32767" attributes="0"/>
+                  <Component id="Add5Button" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="193" max="32767" attributes="0"/>
           </Group>
@@ -40,7 +41,9 @@
               <Component id="AddButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="DisplayButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="189" max="32767" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="Add5Button" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="148" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -60,6 +63,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DisplayButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="Add5Button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Add 5 Random Employees"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Add5ButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

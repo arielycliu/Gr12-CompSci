@@ -28,4 +28,15 @@ public class EmployeeInfo {
 		this.workLoc = workLoc;
 		this.deductRate = deductRate;
 	}
+        
+        // Gettor
+        public int getEmpNum(){
+            return empNumber;
+        }
+        public String getFirstName() {
+            return firstName;
+        }
+        public String getLastName() {
+            return lastName;
+        }
 }

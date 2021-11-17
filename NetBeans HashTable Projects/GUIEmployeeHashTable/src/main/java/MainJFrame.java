@@ -32,6 +32,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         AddButton = new javax.swing.JButton();
         DisplayButton = new javax.swing.JButton();
+        Add5Button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -49,6 +50,13 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        Add5Button.setText("Add 5 Random Employees");
+        Add5Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Add5ButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -57,7 +65,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(AddButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DisplayButton, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE))
+                    .addComponent(DisplayButton, javax.swing.GroupLayout.DEFAULT_SIZE, 172, Short.MAX_VALUE)
+                    .addComponent(Add5Button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(193, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -67,7 +76,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(AddButton)
                 .addGap(18, 18, 18)
                 .addComponent(DisplayButton)
-                .addContainerGap(189, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Add5Button)
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pack();
@@ -86,6 +97,27 @@ public class MainJFrame extends javax.swing.JFrame {
         theDisplayHashTableWindow.setVisible(true);
         theDisplayHashTableWindow.setMainHT(theHT);
     }//GEN-LAST:event_DisplayButtonActionPerformed
+
+    private void Add5ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add5ButtonActionPerformed
+        // TODO add your handling code here:
+        PTE newPTE;
+        FTE newFTE;
+        
+        newPTE = new PTE(111111, "Bugs", "Bunny", 0, 3, 0.25, 22.50, 25, 40.0);
+	theHT.addToTable(newPTE);
+		
+        newFTE = new FTE(111112, "Lola", "Bunny", 1, 5, 0.27, 120000.0);
+        theHT.addToTable(newFTE);
+
+        newPTE = new PTE(111113, "Daffy", "Duck", 0, 2, 0.18, 17.0, 20.0, 25.0);
+        theHT.addToTable(newPTE);
+        
+        newFTE = new FTE(111114, "Patrick", "Li", 1, 5, 0.27, 1200000.0);
+        theHT.addToTable(newFTE);
+
+        newPTE = new PTE(111115, "Ariel", "Liu", 0, 2, 0.18, 17.0, 20.0, 40.0);
+        theHT.addToTable(newPTE);
+    }//GEN-LAST:event_Add5ButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -123,6 +155,7 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add5Button;
     private javax.swing.JButton AddButton;
     private javax.swing.JButton DisplayButton;
     // End of variables declaration//GEN-END:variables

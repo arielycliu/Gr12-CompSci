@@ -55,7 +55,7 @@ public class AddNewEmployee extends javax.swing.JFrame {
 
         jLabel1.setText("Adding a new employee");
 
-        InputTypeEmployee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Part-time Employee", "Full-time Employee" }));
+        InputTypeEmployee.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Type of Employee", "Part-time Employee", "Full-time Employee" }));
         InputTypeEmployee.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InputTypeEmployeeActionPerformed(evt);
@@ -179,7 +179,10 @@ public class AddNewEmployee extends javax.swing.JFrame {
         // Change the input text avaliable based on if they are part time or full time
         Object employeeType = InputTypeEmployee.getSelectedItem();
         if (employeeType != null){
-            if (employeeType == "Part-time Employee"){
+            if (employeeType == "Choose Type of Employee") {
+                System.out.println("You have to indicate if you are part time or full time employee.");
+            }
+            else if (employeeType == "Part-time Employee"){
                 ExtraInfoLabel.setText("Part-time Employee Info");
                 ExtraInfoLabel.setVisible(true);
                 PTEInputhW.setVisible(true);

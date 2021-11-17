@@ -104,14 +104,49 @@ public class DisplayHashTable extends javax.swing.JFrame {
         model = new DefaultTableModel(new Object[] {"Type", "Employee Num", "First Name", "Last Name"}, numInHT);
         theTable.setModel(model);
         theTable.setAutoCreateColumnsFromModel(true); // set true in code as well
-        int rowPosition = -1;
+        int empCounter = -1;
+        
         try {
             int NumEmployees = Integer.parseInt(InputTableDisplayNum.getText());
         } catch (Exception e) {
             System.out.println("You must enter an integer.");
         }
+                
+        System.out.println("I found " + Integer.toString(numInHT) + " employee(s) in the hashtable. ");
         
-        System.out.println("I found " + Integer.toString(numInHT) + "employees in the hashtable. ");
+        if (numInHT > 0) {
+            for(int i = 0; i < mainHT.buckets.length; i++){ // loop thru the hashtable and check each bucket
+                for (int j = 0; j < mainHT.buckets[i].size(); j++) { // loop within each bucket
+                    EmployeeInfo curEmp = mainHT.buckets[i].get(j);
+                    empCounter++;
+                    System.out.println("  Employee number " + Integer.toString(curEmp.getEmpNum()));
+                    System.out.println("  First name, last name : " + curEmp.getFirstName() + " " + curEmp.getLastName());
+                    if (curEmp instanceof FTE) {
+                        FTE theFTE = (FTE) curEmp;
+                        System.out.println("    That employee has gross yearly salary $" + Double.toString(theFTE.calcGrossAnnualIncome()));
+                        System.out.println("    That employee has net yearly income $" + Double.toString(theFTE.calcNetAnnualIncome()));
+                        model.setValueAt("Full Time", empCounter, 0);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
+                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
+                    } 
+                    else if (curEmp instanceof PTE){
+                        PTE thePTE = (PTE) curEmp;
+                        System.out.println("    That employee has hourly wage $" + Double.toString(thePTE.hourlyWage));
+                        System.out.println("    That employee has hours per week " + Double.toString(thePTE.hoursPerWeek));
+                        System.out.println("    That employee has weeks per year " + Double.toString(thePTE.weeksPerYear));
+                        model.setValueAt("Part Time", empCounter, 0);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
+                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
+                    }
+                }
+            }
+        } else {
+            System.out.println("Nothing in the HT! :(");
+            EmployeeInfo curEmp = null;
+            model.setValueAt(curEmp, 1, 0);
+        }
         
     }//GEN-LAST:event_DisplayButtonActionPerformed
 
