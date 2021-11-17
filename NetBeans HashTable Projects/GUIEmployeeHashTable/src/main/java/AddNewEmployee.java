@@ -215,36 +215,65 @@ public class AddNewEmployee extends javax.swing.JFrame {
 
     private void SubmitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitButtonActionPerformed
         // TODO add your handling code here:
+        try {
+            int eN = Integer.parseInt(InputEmNum.getText());
+            String fN = InputFirstName.getText();
+            String lN = InputLastName.getText();
+            int g = Integer.parseInt(InputGender.getText());
+            int wL = Integer.parseInt(InputWorkLoc.getText());
+            int dR = Integer.parseInt(InputDeductRate.getText());        
+        } catch (Exception e) {
+            System.out.println("Make sure everything is filled in");
+            System.out.println("Employee Number, Gender, Work Location, and Deduct rate should be integers");
+            System.out.println("Information specific to part time or full time employees like salary should be doubles");
+            return;
+        }
+        
         int eN = Integer.parseInt(InputEmNum.getText());
         String fN = InputFirstName.getText();
         String lN = InputLastName.getText();
         int g = Integer.parseInt(InputGender.getText());
         int wL = Integer.parseInt(InputWorkLoc.getText());
-        int dR = Integer.parseInt(InputDeductRate.getText());        
-        Object employeeType = InputTypeEmployee.getSelectedItem();
+        int dR = Integer.parseInt(InputDeductRate.getText());
         
         // Check that everything is either num or string and everything is filled in
-        
-        if (employeeType != null){
+        Object employeeType = InputTypeEmployee.getSelectedItem();
+        if (employeeType != "Choose Type of Employee"){
             System.out.println("The person is an " + employeeType);
             if (employeeType == "Part-time Employee"){
+                try {
+                    double hW = Double.parseDouble(PTEInputhW.getText());
+                    double hPW = Double.parseDouble(PTEInputhPW.getText());
+                    double wPY = Double.parseDouble(PTEInputwPY.getText());
+                } catch (Exception e) {
+                    System.out.println("Make sure everything is filled in");
+                    return;
+                }
                 double hW = Double.parseDouble(PTEInputhW.getText());
                 double hPW = Double.parseDouble(PTEInputhPW.getText());
                 double wPY = Double.parseDouble(PTEInputwPY.getText());
-                
+       
                 PTE somePTE;
                 somePTE = new PTE(eN, fN, lN, g, wL, dR, hW, hPW, wPY);
                 mainHT.addToTable(somePTE);
                 System.out.println("Added " + somePTE.firstName);
             }
             else if (employeeType == "Full-time Employee") {
+                try {
+                    double salary = Double.parseDouble(FTEInputSalary.getText());
+                } catch (Exception e) {
+                    System.out.println("Make sure everything is filled in");
+                    return;
+                }
                 double salary = Double.parseDouble(FTEInputSalary.getText());
-                
                 FTE someFTE;
                 someFTE = new FTE(eN, fN, lN, g, wL, dR, salary);
                 mainHT.addToTable(someFTE);
                 System.out.println("Added " + someFTE.firstName);
             }
+        } else {
+            System.out.println("Please indicate employee type");
+            return;
         }
     }//GEN-LAST:event_SubmitButtonActionPerformed
 
