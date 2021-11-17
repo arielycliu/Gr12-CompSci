@@ -110,6 +110,7 @@ public class DisplayHashTable extends javax.swing.JFrame {
             int NumEmployees = Integer.parseInt(InputTableDisplayNum.getText());
         } catch (Exception e) {
             System.out.println("You must enter an integer.");
+            return;
         }
                 
         System.out.println("I found " + Integer.toString(numInHT) + " employee(s) in the hashtable. ");
