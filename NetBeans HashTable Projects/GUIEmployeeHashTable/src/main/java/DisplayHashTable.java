@@ -1,3 +1,6 @@
+
+import javax.swing.table.DefaultTableModel;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -30,7 +33,7 @@ public class DisplayHashTable extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        LabelTitle = new javax.swing.JLabel();
         InputTableDisplayNum = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         theTable = new javax.swing.JTable();
@@ -38,7 +41,7 @@ public class DisplayHashTable extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Display HashTable");
+        LabelTitle.setText("Display HashTable");
 
         InputTableDisplayNum.setText("x");
 
@@ -74,14 +77,14 @@ public class DisplayHashTable extends javax.swing.JFrame {
                         .addComponent(InputTableDisplayNum, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(DisplayButton, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(LabelTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(LabelTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(InputTableDisplayNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -98,6 +101,18 @@ public class DisplayHashTable extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         int numInHT = mainHT.getNumInHashTable();
+        model = new DefaultTableModel(new Object[] {"Type", "Employee Num", "First Name", "Last Name"}, numInHT);
+        theTable.setModel(model);
+        theTable.setAutoCreateColumnsFromModel(true); // set true in code as well
+        int rowPosition = -1;
+        try {
+            int NumEmployees = Integer.parseInt(InputTableDisplayNum.getText());
+        } catch (Exception e) {
+            System.out.println("You must enter an integer.");
+        }
+        
+        System.out.println("I found " + Integer.toString(numInHT) + "employees in the hashtable. ");
+        
     }//GEN-LAST:event_DisplayButtonActionPerformed
 
     /**
@@ -138,7 +153,7 @@ public class DisplayHashTable extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton DisplayButton;
     private javax.swing.JTextField InputTableDisplayNum;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel LabelTitle;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable theTable;
     // End of variables declaration//GEN-END:variables
