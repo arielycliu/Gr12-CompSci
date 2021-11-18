@@ -180,7 +180,9 @@ public class AddNewEmployee extends javax.swing.JFrame {
         Object employeeType = InputTypeEmployee.getSelectedItem();
         if (employeeType != null){
             if (employeeType == "Choose Type of Employee") {
-                System.out.println("You have to indicate if you are part time or full time employee.");
+                String errormsg = "You have to indicate if you are part time or full time employee.";
+                System.out.println(errormsg);
+                Error(errormsg);
             }
             else if (employeeType == "Part-time Employee"){
                 ExtraInfoLabel.setText("Part-time Employee Info");
@@ -223,7 +225,9 @@ public class AddNewEmployee extends javax.swing.JFrame {
             int wL = Integer.parseInt(InputWorkLoc.getText());
             int dR = Integer.parseInt(InputDeductRate.getText());        
         } catch (Exception e) {
-            System.out.println("Make sure everything is filled in");
+            String errormsg = "Fill in everything, all info except name should be numbers.";
+            System.out.println(errormsg);
+            Error(errormsg);
             System.out.println("Employee Number, Gender, Work Location, and Deduct rate should be integers");
             System.out.println("Information specific to part time or full time employees like salary should be doubles");
             return;
@@ -246,7 +250,9 @@ public class AddNewEmployee extends javax.swing.JFrame {
                     double hPW = Double.parseDouble(PTEInputhPW.getText());
                     double wPY = Double.parseDouble(PTEInputwPY.getText());
                 } catch (Exception e) {
-                    System.out.println("Make sure everything is filled in");
+                    String errormsg = "Make sure everything is filled in.";
+                    System.out.println(errormsg);
+                    Error(errormsg);
                     return;
                 }
                 double hW = Double.parseDouble(PTEInputhW.getText());
@@ -262,7 +268,9 @@ public class AddNewEmployee extends javax.swing.JFrame {
                 try {
                     double salary = Double.parseDouble(FTEInputSalary.getText());
                 } catch (Exception e) {
-                    System.out.println("Make sure everything is filled in");
+                    String errormsg = "Make sure everything is filled in.";
+                    System.out.println(errormsg);
+                    Error(errormsg);
                     return;
                 }
                 double salary = Double.parseDouble(FTEInputSalary.getText());
@@ -272,11 +280,19 @@ public class AddNewEmployee extends javax.swing.JFrame {
                 System.out.println("Added " + someFTE.firstName);
             }
         } else {
-            System.out.println("Please indicate employee type");
+            String errormsg = "Please indicate employee type";
+            System.out.println(errormsg);
+            Error(errormsg);
             return;
         }
     }//GEN-LAST:event_SubmitButtonActionPerformed
-
+    
+    public void Error(String errormsg){
+        ErrorPopup theErrorWindow = new ErrorPopup();
+        theErrorWindow.setVisible(true);
+        theErrorWindow.setErrorLabel(errormsg);
+    } 
+    
     /**
      * @param args the command line arguments
      */
