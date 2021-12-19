@@ -10,11 +10,11 @@ public class FTE extends EmployeeInfo{
     }
     
     // Methods
-    public double getYearlySalary() {
+    public double getYearlySalary() { //calcGrossAnnualIncome
         return yearlySalary;
     }
      
-    public double calcAnnualNetIncome() {
+    public double calcNetAnnualIncome() { 
         return (yearlySalary *(1.0 - deductRate));
     }
 }

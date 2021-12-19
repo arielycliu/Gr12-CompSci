@@ -9,11 +9,18 @@
  */
 public class AddNewEmployee extends javax.swing.JFrame {
 
+    // Attributes
+    public MyHashTable theHTA;
+    
     /**
      * Creates new form AddNewEmployee
      */
     public AddNewEmployee() {
         initComponents();
+    }
+    
+    public void setMainHT(MyHashTable theHT){
+        theHTA = theHT;
     }
 
     /**
@@ -25,7 +32,9 @@ public class AddNewEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(100, 200, 600, 600));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

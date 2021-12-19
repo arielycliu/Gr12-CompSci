@@ -3,19 +3,39 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author ariel
  */
 public class DisplayEmployees extends javax.swing.JFrame {
 
+    // Attributes
+    private MyHashTable theHT;
+    private DefaultTableModel model;
+    
     /**
      * Creates new form DisplayEmployees
      */
     public DisplayEmployees() {
         initComponents();
+        int numInHT = 0;
+        try{
+            numInHT = theHT.getNumInHashTable();
+        } catch (Exception e) {
+            System.out.println("No employees in database, nothing to show yet :(");
+        }
+        model = new DefaultTableModel(new Object[] {"Type", "Employee Num", "First Name", "Last Name"}, numInHT);
+        theTable.setModel(model);
+        theTable.setAutoCreateColumnsFromModel(true); // set true in code as well
+        int empCounter = -1; // Row position
+        int NumEmployees = numInHT; // display all employees
+        FillTableFunction(numInHT, empCounter, NumEmployees);
     }
-
+    
+    public void setMainHT(MyHashTable HTrefval){
+        theHT = HTrefval;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -25,21 +45,145 @@ public class DisplayEmployees extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        theTable = new javax.swing.JTable();
+        Display_input = new javax.swing.JTextField();
+        Display_button = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(400, 50, 600, 600));
+
+        jLabel1.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        jLabel1.setText("How many employees do you want to display?");
+
+        theTable.setFont(new java.awt.Font("Consolas", 0, 11)); // NOI18N
+        theTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(theTable);
+
+        Display_input.setFont(new java.awt.Font("Montserrat Medium", 0, 10)); // NOI18N
+        Display_input.setText("25");
+        Display_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Display_inputActionPerformed(evt);
+            }
+        });
+
+        Display_button.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        Display_button.setText("Display Employees");
+        Display_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Display_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Display_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(48, 48, 48)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Display_input, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Display_button, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Display_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(8, 8, 8)
+                .addComponent(Display_button)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Display_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Display_inputActionPerformed
+        DisplayTableFunction();
+    }//GEN-LAST:event_Display_inputActionPerformed
+    private void DisplayTableFunction() {
+        // find num in input and display employees
+        
+        int numInHT = theHT.getNumInHashTable();
+        model = new DefaultTableModel(new Object[] {"Type", "Employee Num", "First Name", "Last Name"}, numInHT);
+        theTable.setModel(model);
+        theTable.setAutoCreateColumnsFromModel(true); // set true in code as well
+        int empCounter = -1; // Row position
+        int NumEmployees = 0;
+        
+        try {
+            NumEmployees = Integer.parseInt(Display_input.getText());
+        } catch (Exception e) {
+            System.out.println("You must enter an integer.");
+            return;
+        }
+                
+        System.out.println("I found " + Integer.toString(numInHT) + " employee(s) in the hashtable. ");
+        FillTableFunction(numInHT, empCounter, NumEmployees);
+    }
+    private void FillTableFunction(int numInHT, int empCounter, int NumEmployees){
+        if (numInHT > 0) {
+            for(int i = 0; i < theHT.buckets.length; i++){ // loop thru the hashtable and check each bucket
+                for (int j = 0; j < theHT.buckets[i].size(); j++) { // loop within each bucket
+                    EmployeeInfo curEmp = theHT.buckets[i].get(j);
+                    empCounter++;
+                    if(empCounter >= NumEmployees) {
+                        System.out.println("Found all employees within number given");
+                        return;
+                    }
+                    System.out.println("  Employee number " + Integer.toString(curEmp.getEmpNum()));
+                    System.out.println("  First name, last name : " + curEmp.getFirstName() + " " + curEmp.getLastName());
+                    if(curEmp instanceof FTE) {
+                        FTE theFTE = (FTE) curEmp;
+                        System.out.println("    That employee has gross yearly salary $" + Double.toString(theFTE.getYearlySalary()));
+                        System.out.println("    That employee has net yearly income $" + Double.toString(theFTE.calcNetAnnualIncome()));
+                        model.setValueAt("Full Time", empCounter, 0);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
+                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
+                    } 
+                    else if (curEmp instanceof PTE){
+                        PTE thePTE = (PTE) curEmp;
+                        System.out.println("    That employee has hourly wage $" + Double.toString(thePTE.hourlyWage));
+                        System.out.println("    That employee has hours per week " + Double.toString(thePTE.hoursPerWeek));
+                        System.out.println("    That employee has weeks per year " + Double.toString(thePTE.weeksPerYear));
+                        model.setValueAt("Part Time", empCounter, 0);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
+                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
+                    }
+                }
+            }
+        } else {
+            System.out.println("Nothing in the database! :(");
+            return;
+        }
+    }
+    
+    private void Display_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Display_buttonActionPerformed
+        DisplayTableFunction();
+    }//GEN-LAST:event_Display_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +221,10 @@ public class DisplayEmployees extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Display_button;
+    private javax.swing.JTextField Display_input;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable theTable;
     // End of variables declaration//GEN-END:variables
 }

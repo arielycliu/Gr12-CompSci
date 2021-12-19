@@ -9,11 +9,16 @@
  */
 public class MainJFrame extends javax.swing.JFrame {
 
+    // Attributes
+    public MyHashTable theHT;
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
+        
+        theHT = new MyHashTable(10); // init the hashtabl we'll be using with 10 buckets
     }
 
     /**
@@ -25,21 +30,146 @@ public class MainJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        Add5_button = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        Display_Button = new javax.swing.JButton();
+        Add_button = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBounds(new java.awt.Rectangle(350, 100, 600, 600));
+
+        jLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        jLabel1.setText("System");
+
+        jLabel2.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        jLabel2.setText("Employee");
+
+        jLabel3.setFont(new java.awt.Font("Montserrat SemiBold", 0, 24)); // NOI18N
+        jLabel3.setText("Management");
+
+        Add5_button.setBackground(new java.awt.Color(255, 255, 255));
+        Add5_button.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        Add5_button.setText("Add 5 Employees");
+        Add5_button.setActionCommand("");
+        Add5_button.setAlignmentY(0.0F);
+        Add5_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        Add5_button.setContentAreaFilled(false);
+        Add5_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Add5_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Add5_buttonActionPerformed(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Montserrat SemiBold", 1, 18)); // NOI18N
+        jLabel4.setText("What would you like to do?");
+
+        Display_Button.setBackground(new java.awt.Color(255, 255, 255));
+        Display_Button.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        Display_Button.setText("Display & Edit Employees");
+        Display_Button.setAlignmentY(0.0F);
+        Display_Button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        Display_Button.setContentAreaFilled(false);
+        Display_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Display_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Display_ButtonActionPerformed(evt);
+            }
+        });
+
+        Add_button.setBackground(new java.awt.Color(255, 255, 255));
+        Add_button.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        Add_button.setText("Add Employee");
+        Add_button.setAlignmentY(0.0F);
+        Add_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        Add_button.setContentAreaFilled(false);
+        Add_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Add_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Add_buttonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Display_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addGap(76, 76, 76)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Display_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Add5_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add5_buttonActionPerformed
+        // Add 5 random employees - for testing purposes
+        PTE newPTE;
+        FTE newFTE;
+        
+        newPTE = new PTE(111111, "Bugs", "Bunny", 0, 3, 0.25, 22.50, 25, 40.0);
+	theHT.addToTable(newPTE);
+		
+        newFTE = new FTE(111112, "Lola", "Bunny", 1, 5, 0.27, 120000.0);
+        theHT.addToTable(newFTE);
+
+        newPTE = new PTE(111113, "Daffy", "Duck", 0, 2, 0.18, 17.0, 20.0, 25.0);
+        theHT.addToTable(newPTE);
+        
+        newFTE = new FTE(111114, "Patrick", "Li", 1, 5, 0.27, 1200000.0);
+        theHT.addToTable(newFTE);
+
+        newPTE = new PTE(111115, "Ariel", "Liu", 0, 2, 0.18, 17.0, 20.0, 40.0);
+        theHT.addToTable(newPTE);   
+        System.out.println("SUCCESS - added 5 employees");
+    }//GEN-LAST:event_Add5_buttonActionPerformed
+
+    private void Display_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Display_ButtonActionPerformed
+        // Open window for display table and editing
+        DisplayEmployees DisplayWindow = new DisplayEmployees();
+        DisplayWindow.setVisible(true);
+        DisplayWindow.setMainHT(theHT);
+    }//GEN-LAST:event_Display_ButtonActionPerformed
+
+    private void Add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_buttonActionPerformed
+        // Open window to add employees
+        AddNewEmployee AddWindow = new AddNewEmployee();
+        AddWindow.setVisible(true);
+        AddWindow.setMainHT(theHT); 
+    }//GEN-LAST:event_Add_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -77,5 +207,12 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Add5_button;
+    private javax.swing.JButton Add_button;
+    private javax.swing.JButton Display_Button;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
