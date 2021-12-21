@@ -4,8 +4,8 @@ public class EmployeeInfo {
     public int empNumber;
     public String firstName;
     public String lastName;
-    public int gender;
-    public int workLoc;
+    public String gender;
+    public String workLoc;
     public double deductRate;
 
     // Blank Constructors
@@ -13,13 +13,13 @@ public class EmployeeInfo {
             this.empNumber = 0;
             this.firstName = "A";
             this.lastName = "L";
-            this.gender = 0;
-            this.workLoc = 0;
+            this.gender = "";
+            this.workLoc = "";
             this.deductRate = 0;
     }
 
     // Regular Constructors
-    public EmployeeInfo(int empNumber, String firstName, String lastName, int gender, int workLoc, double deductRate) {
+    public EmployeeInfo(int empNumber, String firstName, String lastName, String gender, String workLoc, double deductRate) {
             this.empNumber = empNumber;
             this.firstName = firstName;
             this.lastName = lastName;

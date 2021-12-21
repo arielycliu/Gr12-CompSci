@@ -129,7 +129,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(Add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         pack();
@@ -140,20 +140,20 @@ public class MainJFrame extends javax.swing.JFrame {
         PTE newPTE;
         FTE newFTE;
         
-        newPTE = new PTE(111111, "Bugs", "Bunny", 0, 3, 0.25, 22.50, 25, 40.0);
-	theHT.addToTable(newPTE);
+        newPTE = new PTE(111111, "Bugs", "Bunny", "", "", 0.25, 22.50, 25, 40.0);
+	theHT.addEmployee(newPTE);
 		
-        newFTE = new FTE(111112, "Lola", "Bunny", 1, 5, 0.27, 120000.0);
-        theHT.addToTable(newFTE);
+        newFTE = new FTE(111112, "Lola", "Bunny", "", "", 0.27, 120000.0);
+        theHT.addEmployee(newFTE);
 
-        newPTE = new PTE(111113, "Daffy", "Duck", 0, 2, 0.18, 17.0, 20.0, 25.0);
-        theHT.addToTable(newPTE);
+        newPTE = new PTE(111113, "Daffy", "Duck", "", "", 0.18, 17.0, 20.0, 25.0);
+        theHT.addEmployee(newPTE);
         
-        newFTE = new FTE(111114, "Patrick", "Li", 1, 5, 0.27, 1200000.0);
-        theHT.addToTable(newFTE);
+        newFTE = new FTE(111114, "Patrick", "Li", "", "", 0.27, 1200000.0);
+        theHT.addEmployee(newFTE);
 
-        newPTE = new PTE(111115, "Ariel", "Liu", 0, 2, 0.18, 17.0, 20.0, 40.0);
-        theHT.addToTable(newPTE);   
+        newPTE = new PTE(111115, "Ariel", "Liu", "", "", 0.18, 17.0, 20.0, 40.0);
+        theHT.addEmployee(newPTE);   
         System.out.println("SUCCESS - added 5 employees");
     }//GEN-LAST:event_Add5_buttonActionPerformed
 
