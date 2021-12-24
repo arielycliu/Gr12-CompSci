@@ -140,19 +140,19 @@ public class MainJFrame extends javax.swing.JFrame {
         PTE newPTE;
         FTE newFTE;
         
-        newPTE = new PTE(111111, "Bugs", "Bunny", "", "", 0.25, 22.50, 25, 40.0);
+        newPTE = new PTE(111111, "Bugs", "Bunny", "M", "DA", 25, 22.50, 25, 40.0);
 	theHT.addEmployee(newPTE);
 		
-        newFTE = new FTE(111112, "Lola", "Bunny", "", "", 0.27, 120000.0);
+        newFTE = new FTE(111112, "Lola", "Bunny", "F", "DA", 27, 120000.0);
         theHT.addEmployee(newFTE);
 
-        newPTE = new PTE(111113, "Daffy", "Duck", "", "", 0.18, 17.0, 20.0, 25.0);
+        newPTE = new PTE(111113, "Daffy", "Duck", "M", "DA", 18, 17.0, 20.0, 25.0);
         theHT.addEmployee(newPTE);
         
-        newFTE = new FTE(111114, "Patrick", "Li", "", "", 0.27, 1200000.0);
+        newFTE = new FTE(111114, "Patrick", "Li", "M", "ON", 27, 1200000.0);
         theHT.addEmployee(newFTE);
 
-        newPTE = new PTE(111115, "Ariel", "Liu", "", "", 0.18, 17.0, 20.0, 40.0);
+        newPTE = new PTE(111115, "Ariel", "Liu", "F", "CA", 18, 17.0, 20.0, 40.0);
         theHT.addEmployee(newPTE);   
         System.out.println("SUCCESS - added 5 employees");
     }//GEN-LAST:event_Add5_buttonActionPerformed
@@ -162,6 +162,7 @@ public class MainJFrame extends javax.swing.JFrame {
         DisplayEmployees DisplayWindow = new DisplayEmployees();
         DisplayWindow.setVisible(true);
         DisplayWindow.setMainHT(theHT);
+        DisplayWindow.DisplayEmployeesFillTableStartup();
     }//GEN-LAST:event_Display_ButtonActionPerformed
 
     private void Add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_buttonActionPerformed

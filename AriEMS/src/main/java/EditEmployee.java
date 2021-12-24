@@ -7,27 +7,56 @@ import java.util.*;
  *
  * @author ariel
  */
-public class AddNewEmployee extends javax.swing.JFrame {
-
+public class EditEmployee extends javax.swing.JFrame {
+    
     // Attributes
-    public MyHashTable theHT;
+    private MyHashTable theHT;
+    private EmployeeInfo employee;
+    private int empNum;
     
     /**
-     * Creates new form AddNewEmployee
+     * Creates new form EditEmployee
      */
-    public AddNewEmployee() {
+    public EditEmployee() {
         initComponents();
-        Type_label.setVisible(false);
-        FTE_salary_input.setVisible(false);
-        PTE_hPW_input.setVisible(false);
-        PTE_hW_input.setVisible(false);
-        PTE_wPY_input.setVisible(false);
     }
     
-    public void setMainHT(MyHashTable theHTrefval){
-        theHT = theHTrefval;
+    public void setMainHT(MyHashTable HTrefval){
+        theHT = HTrefval;
     }
-
+    
+    public void setEmployee(String employeeType, EmployeeInfo employeeToEdit) {
+        employee = employeeToEdit;
+        
+        empNum = employee.getEmpNum(); // set variable to use when deleting and adding to hashtable        
+        EmpNum_input.setText(Integer.toString(empNum));
+        DeductRate_input.setText(Double.toString(employee.getDeductRate()));
+        firstname_input.setText(employee.getFirstName());
+        lastname_input.setText(employee.getLastName());
+        gender_input.setText(employee.getGender());
+        workLoc_input.setText(employee.getWorkLoc());
+        String PTEorFTE = employeeToEdit.PTEorFTE(employeeToEdit);
+        System.out.println("The employee is a " + PTEorFTE);
+        if (PTEorFTE.equals("PTE")) {
+            Type_input.setSelectedItem("Part-time Employee");            
+            PTE somePTE = (PTE) employee;
+            PTE_hW_input.setText(Double.toString(somePTE.hourlyWage));
+            PTE_hPW_input.setText(Double.toString(somePTE.hoursPerWeek));
+            PTE_wPY_input.setText(Double.toString(somePTE.weeksPerYear));           
+        } else if (PTEorFTE.equals("FTE")) {
+            Type_input.setSelectedItem("Full-time Employee");
+            FTE someFTE = (FTE) employee;
+            FTE_salary_input.setText(Double.toString(someFTE.yearlySalary));
+        } else {
+            System.out.println("Something is wrong here. The employee is neither PTE or FTE.");
+        }
+    }
+    
+    public void Error(String errormsg){
+        ErrorPopup errorWindow = new ErrorPopup();
+        errorWindow.setVisible(true);
+        errorWindow.setErrorLabel(errormsg);
+    } 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,57 +66,31 @@ public class AddNewEmployee extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        workLoc_input = new javax.swing.JTextField();
-        DeductRate_input = new javax.swing.JTextField();
-        Add_button = new javax.swing.JButton();
-        Type_label = new javax.swing.JLabel();
-        PTE_hW_input = new javax.swing.JTextField();
-        PTE_hPW_input = new javax.swing.JTextField();
-        PTE_wPY_input = new javax.swing.JTextField();
-        FTE_salary_input = new javax.swing.JTextField();
         Type_input = new javax.swing.JComboBox<>();
         EmpNum_input = new javax.swing.JTextField();
         firstname_input = new javax.swing.JTextField();
         lastname_input = new javax.swing.JTextField();
         gender_input = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        workLoc_input = new javax.swing.JTextField();
+        DeductRate_input = new javax.swing.JTextField();
+        Edit_button = new javax.swing.JButton();
+        Type_label = new javax.swing.JLabel();
+        PTE_hW_input = new javax.swing.JTextField();
+        PTE_hPW_input = new javax.swing.JTextField();
+        PTE_wPY_input = new javax.swing.JTextField();
+        FTE_salary_input = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setBackground(new java.awt.Color(255, 255, 255));
-        setBounds(new java.awt.Rectangle(100, 200, 600, 600));
 
-        jLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
-        jLabel1.setText("Fill out employee information");
-
-        workLoc_input.setText("Work Location");
-
-        DeductRate_input.setText("Deduct Rate");
-
-        Add_button.setText("Add Employee");
-        Add_button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Add_buttonActionPerformed(evt);
-            }
-        });
-
-        Type_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
-        Type_label.setText("Part Time Employee Info");
-
-        PTE_hW_input.setText("Hourly Wage");
-
-        PTE_hPW_input.setText("Hours Per Week");
-
-        PTE_wPY_input.setText("Weeks Per Year");
-
-        FTE_salary_input.setText("Yearly Salary");
-
-        Type_input.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Choose Type of Employee", "Part-time Employee", "Full-time Employee" }));
+        Type_input.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Part-time Employee", "Full-time Employee" }));
         Type_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Type_inputActionPerformed(evt);
             }
         });
 
+        EmpNum_input.setEditable(false);
         EmpNum_input.setText("Employee Number");
         EmpNum_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -105,6 +108,31 @@ public class AddNewEmployee extends javax.swing.JFrame {
         });
 
         gender_input.setText("Gender");
+
+        jLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
+        jLabel1.setText("Edit employee information");
+
+        workLoc_input.setText("Work Location");
+
+        DeductRate_input.setText("Deduct Rate");
+
+        Edit_button.setText("Edit Employee");
+        Edit_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Edit_buttonActionPerformed(evt);
+            }
+        });
+
+        Type_label.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        Type_label.setText("Part Time Employee Info");
+
+        PTE_hW_input.setText("Hourly Wage");
+
+        PTE_hPW_input.setText("Hours Per Week");
+
+        PTE_wPY_input.setText("Weeks Per Year");
+
+        FTE_salary_input.setText("Yearly Salary");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -134,8 +162,8 @@ public class AddNewEmployee extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(PTE_wPY_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(Edit_button, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,22 +194,58 @@ public class AddNewEmployee extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(FTE_salary_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(Add_button)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addComponent(Edit_button)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void Error(String errormsg){
-        ErrorPopup errorWindow = new ErrorPopup();
-        errorWindow.setVisible(true);
-        errorWindow.setErrorLabel(errormsg);
-    } 
-    
-    private void Add_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Add_buttonActionPerformed
-        // Add employee to hashtable after checking all the values are the proper type  
-        
+    private void Type_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Type_inputActionPerformed
+
+        // Change the input text avaliable based on if they are part time or full time
+        Object employeeType = Type_input.getSelectedItem();
+        if (employeeType != null){
+            if (employeeType == "Part-time Employee"){
+                Type_label.setText("Part-time Employee Info");
+                Type_label.setVisible(true);
+                PTE_hW_input.setVisible(true);
+                PTE_hPW_input.setVisible(true);
+                PTE_wPY_input.setVisible(true);
+
+                // HIDE full time stuff
+                FTE_salary_input.setVisible(false);
+            }
+            else if (employeeType == "Full-time Employee") {
+                Type_label.setText("Full-time Employee Info");
+                Type_label.setVisible(true);
+                FTE_salary_input.setVisible(true);
+
+                // HIDE part time stuff
+                PTE_hW_input.setVisible(false);
+                PTE_hPW_input.setVisible(false);
+                PTE_wPY_input.setVisible(false);
+            }
+        }
+    }//GEN-LAST:event_Type_inputActionPerformed
+
+    private void EmpNum_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpNum_inputActionPerformed
+        // Check if number
+        try {
+            int eN = Integer.parseInt(EmpNum_input.getText());
+        } catch (Exception e) {
+            Error("Employee Number must be a number");
+        }
+
+    }//GEN-LAST:event_EmpNum_inputActionPerformed
+
+    private void lastname_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastname_inputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lastname_inputActionPerformed
+
+    private void Edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_buttonActionPerformed
+        // Add employee to hashtable after checking all the values are the proper type
+
         ArrayList<String> inputs = new ArrayList<String>();
         inputs.add(EmpNum_input.getText());
         inputs.add(firstname_input.getText());
@@ -189,7 +253,7 @@ public class AddNewEmployee extends javax.swing.JFrame {
         inputs.add(gender_input.getText());
         inputs.add(workLoc_input.getText());
         inputs.add(DeductRate_input.getText());
-        
+
         // Makre sure everything is filled in
         for (int i = 0; i < inputs.size(); i++) {
             if (inputs.get(i).isEmpty() == true) {
@@ -197,32 +261,22 @@ public class AddNewEmployee extends javax.swing.JFrame {
                 return;
             }
         }
-        
+
         try { // Check if empnum and deduct rate are integers
-            int eN = Integer.parseInt(EmpNum_input.getText());
-            double dR = Double.parseDouble(DeductRate_input.getText());
+            Double dR = Double.parseDouble(DeductRate_input.getText());
         } catch (Exception e) {
-            String errormsg = "Employee number and deduct rate should be numbers.";
+            String errormsg = "Deduct rate should be a number.";
             System.out.println(errormsg);
             Error(errormsg);
             return;
         }
         // Set variables
-        int eN = Integer.parseInt(EmpNum_input.getText());
         String fN = firstname_input.getText();
         String lN = lastname_input.getText();
         String g = gender_input.getText();
         String wL = workLoc_input.getText();
         double dR = Double.parseDouble(DeductRate_input.getText());
-        
-        // Run hashtable function to search for employee number and check if it already exists
-        if (theHT.doesEmpNumAlreadyExist(eN) != null) {
-            String errormsg = "Employee number already exists.";
-            System.out.println(errormsg);
-            Error(errormsg); // return error since we don't allow duplicates
-            return;
-        }
-        
+
         // Check that everything is either num or string and everything is filled in
         Object employeeType = Type_input.getSelectedItem();
         if (employeeType != "Choose Type of Employee"){
@@ -241,10 +295,11 @@ public class AddNewEmployee extends javax.swing.JFrame {
                 double hW = Double.parseDouble(PTE_hW_input.getText());
                 double hPW = Double.parseDouble(PTE_hPW_input.getText());
                 double wPY = Double.parseDouble(PTE_wPY_input.getText());
-                
+
                 // add the PTE
+                theHT.removeFromTable(empNum);
                 PTE somePTE;
-                somePTE = new PTE(eN, fN, lN, g, wL, dR, hW, hPW, wPY);
+                somePTE = new PTE(empNum, fN, lN, g, wL, dR, hW, hPW, wPY);
                 theHT.addEmployee(somePTE);
                 System.out.println("Added " + somePTE.firstName);
                 Error("Successfully Added Employee");
@@ -260,10 +315,12 @@ public class AddNewEmployee extends javax.swing.JFrame {
                     Error(errormsg);
                     return;
                 }
-                // Add the FTE
                 double salary = Double.parseDouble(FTE_salary_input.getText());
+                
+                // Add the FTE
+                theHT.removeFromTable(empNum);
                 FTE someFTE;
-                someFTE = new FTE(eN, fN, lN, g, wL, dR, salary);
+                someFTE = new FTE(empNum, fN, lN, g, wL, dR, salary);
                 theHT.addEmployee(someFTE);
                 System.out.println("Added " + someFTE.firstName);
                 Error("Successfully Added Employee");
@@ -274,51 +331,7 @@ public class AddNewEmployee extends javax.swing.JFrame {
             System.out.println(errormsg);
             Error(errormsg);
         }
-    }//GEN-LAST:event_Add_buttonActionPerformed
-
-    private void Type_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Type_inputActionPerformed
-
-        // Change the input text avaliable based on if they are part time or full time
-        Object employeeType = Type_input.getSelectedItem();
-        if (employeeType != null){
-            if (employeeType == "Part-time Employee"){
-                Type_label.setText("Part-time Employee Info");
-                Type_label.setVisible(true);
-                PTE_hW_input.setVisible(true);
-                PTE_hPW_input.setVisible(true);
-                PTE_wPY_input.setVisible(true);
-
-                // HIDE full time stuff
-                FTE_salary_input.setVisible(false);
-                Type_input.removeItem("Choose Type of Employee"); // remove the option
-            }
-            else if (employeeType == "Full-time Employee") {
-                Type_label.setText("Full-time Employee Info");
-                Type_label.setVisible(true);
-                FTE_salary_input.setVisible(true);
-
-                // HIDE part time stuff
-                PTE_hW_input.setVisible(false);
-                PTE_hPW_input.setVisible(false);
-                PTE_wPY_input.setVisible(false);
-                Type_input.removeItem("Choose Type of Employee"); // remove the option
-            }
-        }
-    }//GEN-LAST:event_Type_inputActionPerformed
-
-    private void EmpNum_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmpNum_inputActionPerformed
-        // Check if number
-        try {
-            int eN = Integer.parseInt(EmpNum_input.getText());
-        } catch (Exception e) {
-            Error("Employee Number must be a number");
-        }
-        
-    }//GEN-LAST:event_EmpNum_inputActionPerformed
-
-    private void lastname_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lastname_inputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lastname_inputActionPerformed
+    }//GEN-LAST:event_Edit_buttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -337,27 +350,27 @@ public class AddNewEmployee extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddNewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddNewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddNewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddNewEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployee.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddNewEmployee().setVisible(true);
+                new EditEmployee().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Add_button;
     private javax.swing.JTextField DeductRate_input;
+    private javax.swing.JButton Edit_button;
     private javax.swing.JTextField EmpNum_input;
     private javax.swing.JTextField FTE_salary_input;
     private javax.swing.JTextField PTE_hPW_input;

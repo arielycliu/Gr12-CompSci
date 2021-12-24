@@ -29,14 +29,14 @@ public class MyHashTable {
         return(empNumber % buckets.length);  // emp number modulo number of buckets
     }
 
-    public boolean doesEmpNumAlreadyExist(int empNum) {
+    public EmployeeInfo doesEmpNumAlreadyExist(int empNum) {
         int targetBucket = calcBucket(empNum); // calculate which bucket to search
         for (int i = 0; i < buckets[targetBucket].size(); i++) {    // loop thru that bucket's ArrayList
             if (buckets[targetBucket].get(i).getEmpNum() == empNum) {     // check if the element in the ArrayList has the same emp number
-                return true; // return as true since it is found 
+                return buckets[targetBucket].get(i); // return refval since it is found 
             }
         }
-        return false; // the empNum doesn't already exist
+        return null; // the empNum doesn't already exist
     }
     
     public boolean addEmployee(EmployeeInfo theEmp) {

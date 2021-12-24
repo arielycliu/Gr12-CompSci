@@ -1,7 +1,7 @@
 
 public class FTE extends EmployeeInfo{
     // Full time employee attributes
-    private double yearlySalary;
+    public double yearlySalary;
     
     // Constructor
     public FTE(int eN, String fN, String lN, String g, String wL, double dR, double yS) {

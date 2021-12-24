@@ -17,25 +17,69 @@ public class DisplayEmployees extends javax.swing.JFrame {
     /**
      * Creates new form DisplayEmployees
      */
-    public DisplayEmployees() {
+    public DisplayEmployees() { // init window
         initComponents();
-        int numInHT = 0;
-        try{
-            numInHT = theHT.getNumInHashTable();
-        } catch (Exception e) {
-            System.out.println("No employees in database, nothing to show yet :(");
-        }
-        model = new DefaultTableModel(new Object[] {"Type", "Employee Num", "First Name", "Last Name"}, numInHT);
-        theTable.setModel(model);
-        theTable.setAutoCreateColumnsFromModel(true); // set true in code as well
-        int empCounter = -1; // Row position
-        int NumEmployees = numInHT; // display all employees
-        FillTableFunction(numInHT, empCounter, NumEmployees);
     }
     
     public void setMainHT(MyHashTable HTrefval){
         theHT = HTrefval;
     }
+    
+    public void DisplayEmployeesFillTableStartup() {
+        int numInHT = theHT.getNumInHashTable();
+        if (numInHT == 0) {
+            System.out.println("No employees in database, nothing to show yet :(");
+            return;
+        } // else
+        int empCounter = -1; // Row position
+        int NumEmployees = numInHT; // display all employees
+        model = new DefaultTableModel(new Object[] {"Type", "Employee Num", "First Name", "Last Name"}, numInHT);
+        theTable.setModel(model);
+        theTable.setAutoCreateColumnsFromModel(true); // set true in code as well
+        FillTableFunction(numInHT, empCounter, NumEmployees);
+    }
+    
+    private void FillTableFunction(int numInHT, int empCounter, int NumEmployees){ // Function to fill in table
+        if (numInHT > 0) {
+            for(int i = 0; i < theHT.buckets.length; i++){ // loop thru the hashtable and check each bucket
+                for (int j = 0; j < theHT.buckets[i].size(); j++) { // loop within each bucket
+                    EmployeeInfo curEmp = theHT.buckets[i].get(j);
+                    empCounter++;
+                    if(empCounter >= NumEmployees) {
+                        // System.out.println("Found all employees within number given");
+                        return;
+                    }
+                    System.out.println("  Employee number " + Integer.toString(curEmp.getEmpNum()));
+                    System.out.println("  First name, last name : " + curEmp.getFirstName() + " " + curEmp.getLastName());
+                    if(curEmp instanceof FTE) {
+                        FTE theFTE = (FTE) curEmp;
+                        System.out.println("    That employee has gross yearly salary $" + Double.toString(theFTE.getYearlySalary()));
+                        System.out.println("    That employee has net yearly income $" + Double.toString(theFTE.calcNetAnnualIncome()));
+                        model.setValueAt("Full Time", empCounter, 0);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
+                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
+                    } 
+                    else if (curEmp instanceof PTE){
+                        PTE thePTE = (PTE) curEmp;
+                        System.out.println("    That employee has hourly wage $" + Double.toString(thePTE.hourlyWage));
+                        System.out.println("    That employee has hours per week " + Double.toString(thePTE.hoursPerWeek));
+                        System.out.println("    That employee has weeks per year " + Double.toString(thePTE.weeksPerYear));
+                        model.setValueAt("Part Time", empCounter, 0);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
+                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
+                    }
+                }
+            }
+        } else {
+            System.out.println("Nothing in the database! :(");
+            return;
+        }
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,6 +94,8 @@ public class DisplayEmployees extends javax.swing.JFrame {
         theTable = new javax.swing.JTable();
         Display_input = new javax.swing.JTextField();
         Display_button = new javax.swing.JButton();
+        Edit_button = new javax.swing.JButton();
+        Delete_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -89,6 +135,24 @@ public class DisplayEmployees extends javax.swing.JFrame {
             }
         });
 
+        Edit_button.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        Edit_button.setText("Edit Selected Employee");
+        Edit_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Edit_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Edit_buttonActionPerformed(evt);
+            }
+        });
+
+        Delete_button.setFont(new java.awt.Font("Montserrat Medium", 0, 11)); // NOI18N
+        Delete_button.setText("Delete Selected Employee");
+        Delete_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Delete_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Delete_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -98,8 +162,13 @@ public class DisplayEmployees extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Display_input, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Display_button, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(Display_button, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(18, 18, 18)
+                            .addComponent(Edit_button, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Delete_button))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -110,10 +179,14 @@ public class DisplayEmployees extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Display_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
-                .addComponent(Display_button)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Display_button)
+                    .addComponent(Edit_button))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Delete_button)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,7 +205,7 @@ public class DisplayEmployees extends javax.swing.JFrame {
         int empCounter = -1; // Row position
         int NumEmployees = 0;
         
-        try {
+        try { // try to read the integer the user inputed
             NumEmployees = Integer.parseInt(Display_input.getText());
         } catch (Exception e) {
             System.out.println("You must enter an integer.");
@@ -142,49 +215,46 @@ public class DisplayEmployees extends javax.swing.JFrame {
         System.out.println("I found " + Integer.toString(numInHT) + " employee(s) in the hashtable. ");
         FillTableFunction(numInHT, empCounter, NumEmployees);
     }
-    private void FillTableFunction(int numInHT, int empCounter, int NumEmployees){
-        if (numInHT > 0) {
-            for(int i = 0; i < theHT.buckets.length; i++){ // loop thru the hashtable and check each bucket
-                for (int j = 0; j < theHT.buckets[i].size(); j++) { // loop within each bucket
-                    EmployeeInfo curEmp = theHT.buckets[i].get(j);
-                    empCounter++;
-                    if(empCounter >= NumEmployees) {
-                        System.out.println("Found all employees within number given");
-                        return;
-                    }
-                    System.out.println("  Employee number " + Integer.toString(curEmp.getEmpNum()));
-                    System.out.println("  First name, last name : " + curEmp.getFirstName() + " " + curEmp.getLastName());
-                    if(curEmp instanceof FTE) {
-                        FTE theFTE = (FTE) curEmp;
-                        System.out.println("    That employee has gross yearly salary $" + Double.toString(theFTE.getYearlySalary()));
-                        System.out.println("    That employee has net yearly income $" + Double.toString(theFTE.calcNetAnnualIncome()));
-                        model.setValueAt("Full Time", empCounter, 0);
-                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
-                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
-                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
-                    } 
-                    else if (curEmp instanceof PTE){
-                        PTE thePTE = (PTE) curEmp;
-                        System.out.println("    That employee has hourly wage $" + Double.toString(thePTE.hourlyWage));
-                        System.out.println("    That employee has hours per week " + Double.toString(thePTE.hoursPerWeek));
-                        System.out.println("    That employee has weeks per year " + Double.toString(thePTE.weeksPerYear));
-                        model.setValueAt("Part Time", empCounter, 0);
-                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
-                        model.setValueAt(curEmp.getFirstName(), empCounter, 2);
-                        model.setValueAt(curEmp.getLastName(), empCounter, 3);
-                    }
-                }
-            }
-        } else {
-            System.out.println("Nothing in the database! :(");
-            return;
-        }
-    }
-    
+
     private void Display_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Display_buttonActionPerformed
         DisplayTableFunction();
     }//GEN-LAST:event_Display_buttonActionPerformed
 
+    private void Edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_buttonActionPerformed
+        // Check which employee is selected and open new window to edit data
+        int rowSelected = theTable.getSelectedRow();
+        if (rowSelected == -1) { // didn't select employee
+            Error("You must select an employee in the table to edit");
+        } else {
+            int selectedEmpNum = (Integer) theTable.getModel().getValueAt(rowSelected, 1); // change from object to integer, get selected emp number
+            System.out.println("Selected Employee: " + selectedEmpNum);
+            String selectedEmpType = theTable.getModel().getValueAt(rowSelected, 0).toString();
+            EditEmployee editWindow = new EditEmployee(); // open edit window
+            editWindow.setVisible(true);
+            editWindow.setMainHT(theHT);      
+            editWindow.setEmployee(selectedEmpType, theHT.searchByEmployeeNumber(selectedEmpNum)); // find ref value from emp number and send ref val to edit window
+        }
+    }//GEN-LAST:event_Edit_buttonActionPerformed
+
+    private void Delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Delete_buttonActionPerformed
+        // Find employee number and delete
+        int rowSelected = theTable.getSelectedRow();
+        if (rowSelected == -1) {
+            Error("You must select an employee in the table to delete");
+        } else {
+            int selectedEmpNum = (Integer) theTable.getModel().getValueAt(rowSelected, 1); // find emp number
+            theHT.removeFromTable(selectedEmpNum);
+            System.out.println("Selected Employee: " + selectedEmpNum + " removed");
+            // update display
+            DisplayTableFunction();
+        }
+    }//GEN-LAST:event_Delete_buttonActionPerformed
+    
+    public void Error(String errormsg){
+        ErrorPopup errorWindow = new ErrorPopup();
+        errorWindow.setVisible(true);
+        errorWindow.setErrorLabel(errormsg);
+    }
     /**
      * @param args the command line arguments
      */
@@ -221,8 +291,10 @@ public class DisplayEmployees extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Delete_button;
     private javax.swing.JButton Display_button;
     private javax.swing.JTextField Display_input;
+    private javax.swing.JButton Edit_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable theTable;
