@@ -111,6 +111,11 @@ public class searchemp extends javax.swing.JFrame {
         ln.setEditable(false);
 
         hw.setEditable(false);
+        hw.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hwActionPerformed(evt);
+            }
+        });
 
         hweek.setEditable(false);
 
@@ -277,6 +282,7 @@ public class searchemp extends javax.swing.JFrame {
             String HoursPerWeek = Double.toString(pteemp.hoursPerWeek);
             String WeeksPerYear = Double.toString(pteemp.weeksPerYear);
             String PteAnnualIncome = Double.toString(pteemp.CalcPteAnnualNetIncome());
+            System.out.println(Double.toString(pteemp.hourlyWage));
             hw.setText(HourlyWage);
             System.out.println(HourlyWage);
             System.out.println("fuck this shit im out");
@@ -294,6 +300,10 @@ public class searchemp extends javax.swing.JFrame {
     private void fnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_fnActionPerformed
+
+    private void hwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hwActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_hwActionPerformed
 
     /**
      * @param args the command line arguments
