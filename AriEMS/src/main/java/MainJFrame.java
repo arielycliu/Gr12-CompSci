@@ -37,6 +37,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         Display_Button = new javax.swing.JButton();
         Add_button = new javax.swing.JButton();
+        Search_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -94,6 +95,19 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        Search_button.setBackground(new java.awt.Color(255, 255, 255));
+        Search_button.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        Search_button.setText("Search Employee");
+        Search_button.setAlignmentY(0.0F);
+        Search_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        Search_button.setContentAreaFilled(false);
+        Search_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Search_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Search_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -109,7 +123,10 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(Add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Display_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -128,7 +145,9 @@ public class MainJFrame extends javax.swing.JFrame {
                     .addComponent(Display_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Add_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
 
@@ -172,6 +191,13 @@ public class MainJFrame extends javax.swing.JFrame {
         AddWindow.setMainHT(theHT); 
     }//GEN-LAST:event_Add_buttonActionPerformed
 
+    private void Search_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Search_buttonActionPerformed
+        // Open new search window
+        SearchEmployee SearchWindow = new SearchEmployee();
+        SearchWindow.setVisible(true);
+        SearchWindow.setMainHT(theHT);
+    }//GEN-LAST:event_Search_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -211,6 +237,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton Add5_button;
     private javax.swing.JButton Add_button;
     private javax.swing.JButton Display_Button;
+    private javax.swing.JButton Search_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

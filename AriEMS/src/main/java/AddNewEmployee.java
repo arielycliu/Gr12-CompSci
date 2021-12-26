@@ -216,7 +216,7 @@ public class AddNewEmployee extends javax.swing.JFrame {
         double dR = Double.parseDouble(DeductRate_input.getText());
         
         // Run hashtable function to search for employee number and check if it already exists
-        if (theHT.doesEmpNumAlreadyExist(eN) != null) {
+        if (theHT.searchByEmployeeNumber(eN) != null) {
             String errormsg = "Employee number already exists.";
             System.out.println(errormsg);
             Error(errormsg); // return error since we don't allow duplicates

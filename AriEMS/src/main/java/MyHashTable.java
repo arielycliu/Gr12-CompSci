@@ -29,7 +29,7 @@ public class MyHashTable {
         return(empNumber % buckets.length);  // emp number modulo number of buckets
     }
 
-    public EmployeeInfo doesEmpNumAlreadyExist(int empNum) {
+    public EmployeeInfo searchByEmployeeNumber(int empNum) {
         int targetBucket = calcBucket(empNum); // calculate which bucket to search
         for (int i = 0; i < buckets[targetBucket].size(); i++) {    // loop thru that bucket's ArrayList
             if (buckets[targetBucket].get(i).getEmpNum() == empNum) {     // check if the element in the ArrayList has the same emp number
@@ -50,7 +50,6 @@ public class MyHashTable {
         return addStatus;
     }
 
-
     public EmployeeInfo removeFromTable(int empNumber) {
         // Remove that emp from the hash table and return the reference value for that emp.
         // Return null if that emp isn't in the table.
@@ -67,21 +66,6 @@ public class MyHashTable {
         }
         return null; // could not find emp after checking the bucket, return null
     }
-
-	
-    public EmployeeInfo searchByEmployeeNumber(int empNumber) {
-        // Return the reference value for that emp, return null if emp isn't in the table.
-        int bucketNum = calcBucket(empNumber);    // find which bucket we saved that emp to
-
-        // check that bucketNum or bucket index for the emp with that empNum
-        for (int i = 0; i < buckets[bucketNum].size(); i++) {     // loop thru that bucket's ArrayList
-            if (buckets[bucketNum].get(i).getEmpNum() == empNumber) { // check if that emp in the ArrayList matches the emp number
-                return buckets[bucketNum].get(i);    // return this emp if it does match
-            }
-        }
-        return null; // could not find student after checking the entire bucket, return null
-    }
-
 
     public void displayTable() {
         // Walk through the buckets and display the items in each bucket's ArrayList.
