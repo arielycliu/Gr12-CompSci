@@ -74,7 +74,7 @@ public class MyHashTable {
             }
             else{
                 boolean removeStatus = buckets[bucketNum].remove(theEmployee);
-                numInHashTable++;
+                numInHashTable--;
                 return removeStatus;
             }
         }
@@ -130,6 +130,10 @@ public class MyHashTable {
                 }
 
 	} // end displayContents
+
+    PTE searchByPteEmployeeNumber(int theEmpNum) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 	
 } // end MyHashTable

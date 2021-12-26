@@ -35,7 +35,7 @@ public class EditEmployee extends javax.swing.JFrame {
         lastname_input.setText(employee.getLastName());
         gender_input.setText(employee.getGender());
         workLoc_input.setText(employee.getWorkLoc());
-        String PTEorFTE = employeeToEdit.PTEorFTE(employeeToEdit);
+        String PTEorFTE = employeeToEdit.PTEorFTE(employeeToEdit); // can also check from display function data in first column 0
         System.out.println("The employee is a " + PTEorFTE);
         if (PTEorFTE.equals("PTE")) {
             Type_input.setSelectedItem("Part-time Employee");            

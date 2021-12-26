@@ -132,6 +132,7 @@ public class MainJFrame extends javax.swing.JFrame {
         MyHashTable refVal = theHT;
         //RemoveEmployeeJFrame.setMainHT(refVal);
         theAnotherSeparateJFrame.setVisible(true);
+        theAnotherSeparateJFrame.setMainHT(theHT);
         System.out.println(theAnotherSeparateJFrame);
     }//GEN-LAST:event_clicked_removeemp
 
@@ -139,7 +140,7 @@ public class MainJFrame extends javax.swing.JFrame {
         searchemp thesearchemp = new searchemp();
         thesearchemp.setVisible(true);
         MyHashTable refVal = getTheHT();
-        searchemp.setMainHT(refVal);// TODO add your handling code here:
+        thesearchemp.setMainHT(refVal);// TODO add your handling code here:
     }//GEN-LAST:event_searchempActionPerformed
 
     

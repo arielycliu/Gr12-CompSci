@@ -27,5 +27,10 @@ public class PTE extends EmployeeInfo {
         weeksPerYear = wPY;
         
     }
+
+    double CalcPteAnnualNetIncome() {
+        return(hourlyWage * hoursPerWeek * weeksPerYear * (1 - deductRate));
+//To change body of generated methods, choose Tools | Templates.
+    }
     
 }

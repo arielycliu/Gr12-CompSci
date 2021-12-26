@@ -176,7 +176,11 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
         String theFirstName = inputfn.getText();
         String theLastName = inputlastname.getText();
         
-      
+//        for (int j = 0; j < mainHT.buckets[targetBucket].size(); j++) {
+//            if (employeeNum != mainHT.buckets[targetBucket].get(j).geteN()) {
+//                
+//            }
+//	} work on this to ensure no duplicate employees
         if (Fulltime.isSelected() == true) {
             FTE theFTE = new FTE(theEmpNum, theFirstName, theLastName,
                         0, 0, 0.25, 80000.00);
