@@ -196,6 +196,8 @@ public class MainJFrame extends javax.swing.JFrame {
         newPTE = new PTE(111115, "Ariel", "Liu", "F", "CA", 18, 17.0, 20.0, 40.0);
         theHT.addEmployee(newPTE);   
         System.out.println("SUCCESS - added 5 employees");
+        SaveEmployee theSave = new SaveEmployee();
+        theSave.saveData(theHT); // save employee
     }//GEN-LAST:event_Add5_buttonActionPerformed
 
     private void Display_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Display_ButtonActionPerformed

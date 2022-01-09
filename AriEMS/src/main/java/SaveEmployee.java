@@ -29,12 +29,8 @@ public class SaveEmployee {
     
     private String empType;
     
-    public void setMainHT(MyHashTable refval){
-        theHT = refval;
-    }
-    
     public MyHashTable readData(){
-        theHT = new MyHashTable(10);
+        theHT = new MyHashTable(10); // create hashtable to save data to
         try {
             File thefile = new File("EmployeeDatabase.txt");
             Scanner theReader = new Scanner(thefile);
@@ -43,8 +39,8 @@ public class SaveEmployee {
                 theHT = new MyHashTable(10); // init the hashtabl we'll be using with 10 buckets
                 return theHT;
             }
-            while (theReader.hasNextLine()) {
-                String lineData = theReader.nextLine();
+            while (theReader.hasNextLine()) { // will loop thru entire file
+                String lineData = theReader.nextLine(); // reads the next line
                 String[] splitedData = lineData.split(": ");
                 if (splitedData[0].equals("EmpNum")) {
                     empNumber = Integer.parseInt(splitedData[1]);
@@ -66,13 +62,13 @@ public class SaveEmployee {
                     hoursPerWeek = Double.parseDouble(splitedData[1]);
                 } else if (splitedData[0].equals("weeksPerYear")) {
                     weeksPerYear = Double.parseDouble(splitedData[1]);
-                    PTE newPTE;
+                    PTE newPTE; // since last data needed we can add to hashtable now
                     newPTE = new PTE(empNumber, firstName, lastName, gender, workLoc, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
                     theHT.addEmployee(newPTE);   
                     theHT.displayTable();
                 } else if (splitedData[0].equals("yearlySalary")) {
                     yearlySalary = Double.parseDouble(splitedData[1]);
-                    FTE newFTE;
+                    FTE newFTE; // since last data needed we can add to hashtable now
                     newFTE = new FTE(empNumber, firstName, lastName, gender, workLoc, deductRate, yearlySalary);
                     theHT.addEmployee(newFTE);
                     theHT.displayTable();
@@ -82,17 +78,15 @@ public class SaveEmployee {
             theHT.displayTable();
             return theHT;
         } catch (FileNotFoundException e) {
-            System.out.println("No previous data found");
+            System.out.println("No previous data found"); // file does not exist
             theHT = new MyHashTable(10); // init the hashtabl we'll be using with 10 buckets
             return theHT;
         }
     }
     
-    public boolean saveData(MyHashTable refval){
+    public boolean saveData(MyHashTable refval){ // run function whenever changes made
         theHT = refval;
-        
-        createFile();
-        
+        createFile(); // will create file if doesn't already exist
         try {
             FileWriter theWriter = new FileWriter("EmployeeDatabase.txt");
             // Writing starts
@@ -105,14 +99,14 @@ public class SaveEmployee {
                     theWriter.write("gender: " + curEmp.getGender() + "\n");
                     theWriter.write("workLoc: " + curEmp.getWorkLoc() + "\n");
                     theWriter.write("deductRate: " + curEmp.getDeductRate() + "\n");
-                    if (curEmp instanceof PTE) {
-                        PTE curPTE = (PTE) curEmp;
+                    if (curEmp instanceof PTE) { // if PTE write PTE attributes
+                        PTE curPTE = (PTE) curEmp; // turn from EmpInfo to PTE type
                         theWriter.write("type: PTE\n");
                         theWriter.write("hourlyWage: " + curPTE.hourlyWage + "\n");
                         theWriter.write("hoursPerWeek: " + curPTE.hoursPerWeek + "\n");
                         theWriter.write("weeksPerYear: " + curPTE.weeksPerYear + "\n");
-                    } else if (curEmp instanceof FTE) {
-                        FTE curFTE = (FTE) curEmp;
+                    } else if (curEmp instanceof FTE) { // if FTE write FTE attributes
+                        FTE curFTE = (FTE) curEmp; // turn from EmpInfo to FTE type
                         theWriter.write("type: FTE\n");
                         theWriter.write("yearlySalary: " + curFTE.yearlySalary + "\n");
                     }

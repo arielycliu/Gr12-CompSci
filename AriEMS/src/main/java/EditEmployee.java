@@ -303,6 +303,8 @@ public class EditEmployee extends javax.swing.JFrame {
                 theHT.addEmployee(somePTE);
                 System.out.println("Added " + somePTE.firstName);
                 Error("Successfully Added Employee");
+                SaveEmployee theSave = new SaveEmployee();
+                theSave.saveData(theHT); // save to file
                 super.dispose(); // close window
             }
             else if (employeeType == "Full-time Employee") { // check full time employee info
@@ -324,6 +326,8 @@ public class EditEmployee extends javax.swing.JFrame {
                 theHT.addEmployee(someFTE);
                 System.out.println("Added " + someFTE.firstName);
                 Error("Successfully Added Employee");
+                SaveEmployee theSave = new SaveEmployee();
+                theSave.saveData(theHT); // Save to file
                 super.dispose(); // close window
             }
         } else {
