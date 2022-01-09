@@ -18,7 +18,9 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         
-        theHT = new MyHashTable(10); // init the hashtabl we'll be using with 10 buckets
+        SaveEmployee loadData = new SaveEmployee();
+        theHT = loadData.readData();
+        
     }
 
     /**
@@ -38,6 +40,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Display_Button = new javax.swing.JButton();
         Add_button = new javax.swing.JButton();
         Search_button = new javax.swing.JButton();
+        Save_button = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -108,6 +111,19 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        Save_button.setBackground(new java.awt.Color(255, 255, 255));
+        Save_button.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        Save_button.setText("Save Employee");
+        Save_button.setAlignmentY(0.0F);
+        Save_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
+        Save_button.setContentAreaFilled(false);
+        Save_button.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Save_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Save_buttonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,6 +144,10 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(125, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,7 +168,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -198,6 +220,12 @@ public class MainJFrame extends javax.swing.JFrame {
         SearchWindow.setMainHT(theHT);
     }//GEN-LAST:event_Search_buttonActionPerformed
 
+    private void Save_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Save_buttonActionPerformed
+        // TODO add your handling code here:
+        SaveEmployee saving = new SaveEmployee();
+        saving.saveData(theHT);
+    }//GEN-LAST:event_Save_buttonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -237,6 +265,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton Add5_button;
     private javax.swing.JButton Add_button;
     private javax.swing.JButton Display_Button;
+    private javax.swing.JButton Save_button;
     private javax.swing.JButton Search_button;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
