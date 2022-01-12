@@ -20,7 +20,8 @@ public class MainJFrame extends javax.swing.JFrame {
         
         SaveEmployee loadData = new SaveEmployee();
         theHT = loadData.readData();
-        
+        Save_button.setVisible(false);
+        Add5_button.setVisible(false);
     }
 
     /**
@@ -57,7 +58,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         Add5_button.setBackground(new java.awt.Color(255, 255, 255));
         Add5_button.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
-        Add5_button.setText("Add 5 Employees");
+        Add5_button.setText("Add 5 Employees (testing only)");
         Add5_button.setActionCommand("");
         Add5_button.setAlignmentY(0.0F);
         Add5_button.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -140,10 +141,10 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(Display_Button, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(125, Short.MAX_VALUE))
+                        .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(89, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -168,9 +169,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Add5_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Search_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(Save_button, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -181,19 +182,19 @@ public class MainJFrame extends javax.swing.JFrame {
         PTE newPTE;
         FTE newFTE;
         
-        newPTE = new PTE(111111, "Bugs", "Bunny", "M", "DA", 25, 22.50, 25, 40.0);
+        newPTE = new PTE(111111, "Bugs", "Bunny", "M", "DA", 0.2, 22.50, 25, 40.0);
 	theHT.addEmployee(newPTE);
 		
-        newFTE = new FTE(111112, "Lola", "Bunny", "F", "DA", 27, 120000.0);
+        newFTE = new FTE(111112, "Lola", "Bunny", "F", "DA", 0.1, 120000.0);
         theHT.addEmployee(newFTE);
 
-        newPTE = new PTE(111113, "Daffy", "Duck", "M", "DA", 18, 17.0, 20.0, 25.0);
+        newPTE = new PTE(111113, "Daffy", "Duck", "M", "DA", 0.2, 17.0, 20.0, 25.0);
         theHT.addEmployee(newPTE);
         
-        newFTE = new FTE(111114, "Patrick", "Li", "M", "ON", 27, 1200000.0);
+        newFTE = new FTE(111114, "Patrick", "Li", "M", "ON", 0.1, 1200000.0);
         theHT.addEmployee(newFTE);
 
-        newPTE = new PTE(111115, "Ariel", "Liu", "F", "CA", 18, 17.0, 20.0, 40.0);
+        newPTE = new PTE(111115, "Ariel", "Liu", "F", "CA", 0.2, 17.0, 20.0, 40.0);
         theHT.addEmployee(newPTE);   
         System.out.println("SUCCESS - added 5 employees");
         SaveEmployee theSave = new SaveEmployee();

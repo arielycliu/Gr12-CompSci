@@ -46,8 +46,10 @@ public class SearchEmployee extends javax.swing.JFrame {
         PTEhoursperweek = new javax.swing.JLabel();
         PTEweeksperyear = new javax.swing.JLabel();
         FTEyearlysalary = new javax.swing.JLabel();
+        grossAnnualIncome = new javax.swing.JLabel();
+        netAnnualIncome = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Montserrat SemiBold", 0, 14)); // NOI18N
         jLabel1.setText("Search for an employee's information");
@@ -95,6 +97,12 @@ public class SearchEmployee extends javax.swing.JFrame {
         FTEyearlysalary.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
         FTEyearlysalary.setText("jLabel2");
 
+        grossAnnualIncome.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        grossAnnualIncome.setText("jLabel2");
+
+        netAnnualIncome.setFont(new java.awt.Font("Montserrat Medium", 0, 12)); // NOI18N
+        netAnnualIncome.setText("jLabel2");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -102,6 +110,8 @@ public class SearchEmployee extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(netAnnualIncome)
+                    .addComponent(grossAnnualIncome)
                     .addComponent(worklocation)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -149,7 +159,11 @@ public class SearchEmployee extends javax.swing.JFrame {
                         .addComponent(FTEyearlysalary)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(worklocation)
-                .addContainerGap(116, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(grossAnnualIncome)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(netAnnualIncome)
+                .addContainerGap(62, Short.MAX_VALUE))
         );
 
         pack();
@@ -165,6 +179,8 @@ public class SearchEmployee extends javax.swing.JFrame {
         PTEhourlywage.setVisible(visibility);
         PTEhoursperweek.setVisible(visibility);
         PTEweeksperyear.setVisible(visibility);
+        grossAnnualIncome.setVisible(visibility);
+        netAnnualIncome.setVisible(visibility);
     }
     
     private void SearchForEmployee(){
@@ -198,18 +214,22 @@ public class SearchEmployee extends javax.swing.JFrame {
             PTEhourlywage.setText("Hourly wage: " + Double.toString(PTEemployee.hourlyWage));
             PTEhoursperweek.setText("Hours per week: " + Double.toString(PTEemployee.hoursPerWeek));
             PTEweeksperyear.setText("Weeks per year: " + Double.toString(PTEemployee.weeksPerYear));
-            
+            grossAnnualIncome.setText("Gross annual income: " + Double.toString(PTEemployee.calcGrossAnnualIncome()));
+            netAnnualIncome.setText("Net annual income: " + Double.toString(PTEemployee.calcNetAnnualIncome()));
+                        
             // Set FTE labels to false
             FTEyearlysalary.setVisible(false);
             
         } else if (PTEorFTE.equals("FTE")) { // set labels for FTE attributes if FTE
             FTE FTEemployee = (FTE) employeeToSearch;
             FTEyearlysalary.setText("Yearly salary: " + Double.toString(FTEemployee.yearlySalary));
+            netAnnualIncome.setText("Net annual income: " + Double.toString(FTEemployee.calcNetAnnualIncome()));
             
             // Set PTE labels to false
             PTEhourlywage.setVisible(false);
             PTEhoursperweek.setVisible(false);
             PTEweeksperyear.setVisible(false);
+            grossAnnualIncome.setVisible(false);
             
         } else {
             System.out.println("Employee is neither PTE or FTE? Something has gone wrong");
@@ -278,8 +298,10 @@ public class SearchEmployee extends javax.swing.JFrame {
     private javax.swing.JLabel deductrate;
     private javax.swing.JLabel firstname;
     private javax.swing.JLabel gender;
+    private javax.swing.JLabel grossAnnualIncome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lastname;
+    private javax.swing.JLabel netAnnualIncome;
     private javax.swing.JLabel worklocation;
     // End of variables declaration//GEN-END:variables
 }

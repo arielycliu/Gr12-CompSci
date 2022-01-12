@@ -247,6 +247,8 @@ public class DisplayEmployees extends javax.swing.JFrame {
             System.out.println("Selected Employee: " + selectedEmpNum + " removed");
             // update display
             DisplayTableFunction();
+            SaveEmployee theSave = new SaveEmployee();
+            theSave.saveData(theHT); // save employee
         }
     }//GEN-LAST:event_Delete_buttonActionPerformed
     

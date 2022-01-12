@@ -80,6 +80,7 @@ public class EditEmployee extends javax.swing.JFrame {
         PTE_hPW_input = new javax.swing.JTextField();
         PTE_wPY_input = new javax.swing.JTextField();
         FTE_salary_input = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -134,6 +135,9 @@ public class EditEmployee extends javax.swing.JFrame {
 
         FTE_salary_input.setText("Yearly Salary");
 
+        jLabel2.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel2.setText("Employee Number not editable");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -141,6 +145,7 @@ public class EditEmployee extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(EmpNum_input)
@@ -168,9 +173,11 @@ public class EditEmployee extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(EmpNum_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(DeductRate_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -185,8 +192,8 @@ public class EditEmployee extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Type_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Type_label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Type_label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PTE_hW_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PTE_hPW_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -301,8 +308,8 @@ public class EditEmployee extends javax.swing.JFrame {
                 PTE somePTE;
                 somePTE = new PTE(empNum, fN, lN, g, wL, dR, hW, hPW, wPY);
                 theHT.addEmployee(somePTE);
-                System.out.println("Added " + somePTE.firstName);
-                Error("Successfully Added Employee");
+                System.out.println("Edited " + somePTE.firstName);
+                Error("Successfully Edited Employee");
                 SaveEmployee theSave = new SaveEmployee();
                 theSave.saveData(theHT); // save to file
                 super.dispose(); // close window
@@ -324,8 +331,8 @@ public class EditEmployee extends javax.swing.JFrame {
                 FTE someFTE;
                 someFTE = new FTE(empNum, fN, lN, g, wL, dR, salary);
                 theHT.addEmployee(someFTE);
-                System.out.println("Added " + someFTE.firstName);
-                Error("Successfully Added Employee");
+                System.out.println("Edited " + someFTE.firstName);
+                Error("Successfully Edited Employee");
                 SaveEmployee theSave = new SaveEmployee();
                 theSave.saveData(theHT); // Save to file
                 super.dispose(); // close window
@@ -385,6 +392,7 @@ public class EditEmployee extends javax.swing.JFrame {
     private javax.swing.JTextField firstname_input;
     private javax.swing.JTextField gender_input;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField lastname_input;
     private javax.swing.JTextField workLoc_input;
     // End of variables declaration//GEN-END:variables

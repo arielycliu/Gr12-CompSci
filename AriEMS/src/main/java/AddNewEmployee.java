@@ -27,7 +27,7 @@ public class AddNewEmployee extends javax.swing.JFrame {
     public void setMainHT(MyHashTable theHTrefval){
         theHT = theHTrefval;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

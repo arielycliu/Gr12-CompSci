@@ -65,17 +65,14 @@ public class SaveEmployee {
                     PTE newPTE; // since last data needed we can add to hashtable now
                     newPTE = new PTE(empNumber, firstName, lastName, gender, workLoc, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
                     theHT.addEmployee(newPTE);   
-                    theHT.displayTable();
                 } else if (splitedData[0].equals("yearlySalary")) {
                     yearlySalary = Double.parseDouble(splitedData[1]);
                     FTE newFTE; // since last data needed we can add to hashtable now
                     newFTE = new FTE(empNumber, firstName, lastName, gender, workLoc, deductRate, yearlySalary);
                     theHT.addEmployee(newFTE);
-                    theHT.displayTable();
                 }
             }
             theReader.close();
-            theHT.displayTable();
             return theHT;
         } catch (FileNotFoundException e) {
             System.out.println("No previous data found"); // file does not exist
