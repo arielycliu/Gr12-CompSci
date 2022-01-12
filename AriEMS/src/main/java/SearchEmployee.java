@@ -169,7 +169,7 @@ public class SearchEmployee extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void SetAllLabelsVisibility(boolean visibility){
+    private void SetAllLabelsVisibility(boolean visibility){ // function to set visibility of all labels at once for convenience
         deductrate.setVisible(visibility);
         firstname.setVisible(visibility);
         lastname.setVisible(visibility);
@@ -194,11 +194,12 @@ public class SearchEmployee extends javax.swing.JFrame {
         int NumEmployees = Integer.parseInt(EmpNum_input.getText()); // employee number from input
         
         EmployeeInfo employeeToSearch = theHT.searchByEmployeeNumber(NumEmployees); // find employee
-        if (employeeToSearch == null) {
+        if (employeeToSearch == null) { // employee number not found
             System.out.println("Employee not found.");
             Error("Employee not found.");
             return;
         }        
+        // otherwise fill in employee data
         deductrate.setText("Deduct rate: " + Double.toString(employeeToSearch.getDeductRate()));
         firstname.setText("First name: " + employeeToSearch.getFirstName());
         lastname.setText("Last name: " + employeeToSearch.getLastName());
@@ -214,7 +215,7 @@ public class SearchEmployee extends javax.swing.JFrame {
             PTEhourlywage.setText("Hourly wage: " + Double.toString(PTEemployee.hourlyWage));
             PTEhoursperweek.setText("Hours per week: " + Double.toString(PTEemployee.hoursPerWeek));
             PTEweeksperyear.setText("Weeks per year: " + Double.toString(PTEemployee.weeksPerYear));
-            grossAnnualIncome.setText("Gross annual income: " + Double.toString(PTEemployee.calcGrossAnnualIncome()));
+            grossAnnualIncome.setText("Gross annual income: " + Double.toString(PTEemployee.calcGrossAnnualIncome())); // display additional info
             netAnnualIncome.setText("Net annual income: " + Double.toString(PTEemployee.calcNetAnnualIncome()));
                         
             // Set FTE labels to false
@@ -223,7 +224,7 @@ public class SearchEmployee extends javax.swing.JFrame {
         } else if (PTEorFTE.equals("FTE")) { // set labels for FTE attributes if FTE
             FTE FTEemployee = (FTE) employeeToSearch;
             FTEyearlysalary.setText("Yearly salary: " + Double.toString(FTEemployee.yearlySalary));
-            netAnnualIncome.setText("Net annual income: " + Double.toString(FTEemployee.calcNetAnnualIncome()));
+            netAnnualIncome.setText("Net annual income: " + Double.toString(FTEemployee.calcNetAnnualIncome())); // display additional info
             
             // Set PTE labels to false
             PTEhourlywage.setVisible(false);
@@ -237,7 +238,7 @@ public class SearchEmployee extends javax.swing.JFrame {
         
     }
     
-    public void Error(String errormsg){
+    public void Error(String errormsg){ // Error function
         ErrorPopup errorWindow = new ErrorPopup();
         errorWindow.setVisible(true);
         errorWindow.setErrorLabel(errormsg);

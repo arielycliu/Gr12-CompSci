@@ -27,7 +27,7 @@ public class EditEmployee extends javax.swing.JFrame {
     
     public void setEmployee(String employeeType, EmployeeInfo employeeToEdit) {
         employee = employeeToEdit;
-        
+        // Get the previous data for the employee out for you to edit
         empNum = employee.getEmpNum(); // set variable to use when deleting and adding to hashtable        
         EmpNum_input.setText(Integer.toString(empNum));
         DeductRate_input.setText(Double.toString(employee.getDeductRate()));
@@ -35,6 +35,7 @@ public class EditEmployee extends javax.swing.JFrame {
         lastname_input.setText(employee.getLastName());
         gender_input.setText(employee.getGender());
         workLoc_input.setText(employee.getWorkLoc());
+        // PTE and FTE specific attributes - set label data
         String PTEorFTE = employeeToEdit.PTEorFTE(employeeToEdit); // can also check from display function data in first column 0
         System.out.println("The employee is a " + PTEorFTE);
         if (PTEorFTE.equals("PTE")) {
@@ -52,7 +53,7 @@ public class EditEmployee extends javax.swing.JFrame {
         }
     }
     
-    public void Error(String errormsg){
+    public void Error(String errormsg){ // error function
         ErrorPopup errorWindow = new ErrorPopup();
         errorWindow.setVisible(true);
         errorWindow.setErrorLabel(errormsg);
@@ -252,7 +253,7 @@ public class EditEmployee extends javax.swing.JFrame {
 
     private void Edit_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Edit_buttonActionPerformed
         // Add employee to hashtable after checking all the values are the proper type
-
+        // Get an array of all the inputs to check they are filled in
         ArrayList<String> inputs = new ArrayList<String>();
         inputs.add(EmpNum_input.getText());
         inputs.add(firstname_input.getText());
@@ -269,7 +270,7 @@ public class EditEmployee extends javax.swing.JFrame {
             }
         }
 
-        try { // Check if empnum and deduct rate are integers
+        try { // Check if deduct rate is integer, empnum not editable
             Double dR = Double.parseDouble(DeductRate_input.getText());
         } catch (Exception e) {
             String errormsg = "Deduct rate should be a number.";
@@ -284,7 +285,7 @@ public class EditEmployee extends javax.swing.JFrame {
         String wL = workLoc_input.getText();
         double dR = Double.parseDouble(DeductRate_input.getText());
 
-        // Check that everything is either num or string and everything is filled in
+        // Check that PTE and FTE specifics are filled in correctly
         Object employeeType = Type_input.getSelectedItem();
         if (employeeType != "Choose Type of Employee"){
             System.out.println("The person is an " + employeeType);

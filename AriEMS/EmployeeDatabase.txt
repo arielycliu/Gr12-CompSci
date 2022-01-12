@@ -1,11 +1,13 @@
-EmpNum: 111111
-fN: First Name
-lN: Last Name
-gender: Gender
-workLoc: Work Location
-deductRate: 342.0
-type: FTE
-yearlySalary: 324.0
+EmpNum: 111
+fN: aaa
+lN: aaaaaa
+gender: M
+workLoc: CAN
+deductRate: 0.25
+type: PTE
+hourlyWage: 23.0
+hoursPerWeek: 30.0
+weeksPerYear: 40.0
 EmpNum: 111112
 fN: Lola
 lN: Bunny
@@ -14,16 +16,6 @@ workLoc: DA
 deductRate: 0.1
 type: FTE
 yearlySalary: 120000.0
-EmpNum: 111113
-fN: Daffy
-lN: Duck
-gender: M
-workLoc: DA
-deductRate: 0.2
-type: PTE
-hourlyWage: 17.0
-hoursPerWeek: 20.0
-weeksPerYear: 25.0
 EmpNum: 111114
 fN: Patrick
 lN: Li

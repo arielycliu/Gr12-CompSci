@@ -51,22 +51,22 @@ public class DisplayEmployees extends javax.swing.JFrame {
                     }
                     System.out.println("  Employee number " + Integer.toString(curEmp.getEmpNum()));
                     System.out.println("  First name, last name : " + curEmp.getFirstName() + " " + curEmp.getLastName());
-                    if(curEmp instanceof FTE) {
+                    if(curEmp instanceof FTE) { // if FTE Employee
                         FTE theFTE = (FTE) curEmp;
                         System.out.println("    That employee has gross yearly salary $" + Double.toString(theFTE.getYearlySalary()));
                         System.out.println("    That employee has net yearly income $" + Double.toString(theFTE.calcNetAnnualIncome()));
                         model.setValueAt("Full Time", empCounter, 0);
-                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);  // set data in table
                         model.setValueAt(curEmp.getFirstName(), empCounter, 2);
                         model.setValueAt(curEmp.getLastName(), empCounter, 3);
                     } 
-                    else if (curEmp instanceof PTE){
+                    else if (curEmp instanceof PTE){ // if PTE Employee
                         PTE thePTE = (PTE) curEmp;
                         System.out.println("    That employee has hourly wage $" + Double.toString(thePTE.hourlyWage));
                         System.out.println("    That employee has hours per week " + Double.toString(thePTE.hoursPerWeek));
                         System.out.println("    That employee has weeks per year " + Double.toString(thePTE.weeksPerYear));
                         model.setValueAt("Part Time", empCounter, 0);
-                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1);
+                        model.setValueAt(curEmp.getEmpNum(), empCounter, 1); // set data in table
                         model.setValueAt(curEmp.getFirstName(), empCounter, 2);
                         model.setValueAt(curEmp.getLastName(), empCounter, 3);
                     }

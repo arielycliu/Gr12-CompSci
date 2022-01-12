@@ -22,27 +22,27 @@ public class SaveEmployee {
     private String gender;
     private String workLoc;
     private double deductRate;
-    private double hourlyWage;
-    private double hoursPerWeek;
-    private double weeksPerYear;
+    private double hourlyWage; // PTE
+    private double hoursPerWeek; // PTE
+    private double weeksPerYear; // PTE
     private double yearlySalary; // FTE
     
-    private String empType;
+    private String empType; // PTE or FTE
     
     public MyHashTable readData(){
         theHT = new MyHashTable(10); // create hashtable to save data to
         try {
             File thefile = new File("EmployeeDatabase.txt");
             Scanner theReader = new Scanner(thefile);
-            if (thefile.length() == 0) {
+            if (thefile.length() == 0) { // there is no data already existing, file empty
                 System.out.println("No data to read");
-                theHT = new MyHashTable(10); // init the hashtabl we'll be using with 10 buckets
+                theHT = new MyHashTable(10); // init the hashtable we'll be using with 10 buckets
                 return theHT;
             }
             while (theReader.hasNextLine()) { // will loop thru entire file
                 String lineData = theReader.nextLine(); // reads the next line
                 String[] splitedData = lineData.split(": ");
-                if (splitedData[0].equals("EmpNum")) {
+                if (splitedData[0].equals("EmpNum")) { // checking what data is on that line
                     empNumber = Integer.parseInt(splitedData[1]);
                 } else if (splitedData[0].equals("fN")) {
                     firstName = splitedData[1];
@@ -76,7 +76,7 @@ public class SaveEmployee {
             return theHT;
         } catch (FileNotFoundException e) {
             System.out.println("No previous data found"); // file does not exist
-            theHT = new MyHashTable(10); // init the hashtabl we'll be using with 10 buckets
+            theHT = new MyHashTable(10); // also init the hashtable we'll be using with 10 buckets
             return theHT;
         }
     }
@@ -97,13 +97,13 @@ public class SaveEmployee {
                     theWriter.write("workLoc: " + curEmp.getWorkLoc() + "\n");
                     theWriter.write("deductRate: " + curEmp.getDeductRate() + "\n");
                     if (curEmp instanceof PTE) { // if PTE write PTE attributes
-                        PTE curPTE = (PTE) curEmp; // turn from EmpInfo to PTE type
+                        PTE curPTE = (PTE) curEmp; // turn from EmpInfo to PTE type and access PTE attributes
                         theWriter.write("type: PTE\n");
                         theWriter.write("hourlyWage: " + curPTE.hourlyWage + "\n");
                         theWriter.write("hoursPerWeek: " + curPTE.hoursPerWeek + "\n");
                         theWriter.write("weeksPerYear: " + curPTE.weeksPerYear + "\n");
                     } else if (curEmp instanceof FTE) { // if FTE write FTE attributes
-                        FTE curFTE = (FTE) curEmp; // turn from EmpInfo to FTE type
+                        FTE curFTE = (FTE) curEmp; // turn from EmpInfo to FTE type to access FTE attributes
                         theWriter.write("type: FTE\n");
                         theWriter.write("yearlySalary: " + curFTE.yearlySalary + "\n");
                     }
@@ -112,7 +112,7 @@ public class SaveEmployee {
             // Writing end
             theWriter.close();
             System.out.println("Successfully saved data.");
-        } catch (IOException e) {
+        } catch (IOException e) { // error happened
             System.out.println("Error: ");
             e.printStackTrace();
         }
@@ -128,7 +128,7 @@ public class SaveEmployee {
             } else {
                 System.out.println("File already exists.");
             }
-        } catch (IOException e) {
+        } catch (IOException e) { // catch error
             System.out.println("Error:");
             e.printStackTrace();
         }
