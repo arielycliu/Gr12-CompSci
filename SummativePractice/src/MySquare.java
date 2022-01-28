@@ -20,13 +20,8 @@ public class MySquare extends MyShape { // make sure subclass of MyShape
 			return ;
 		}
 		// sideLength must be valid now
-		
-		System.out.println((symbolToUse+" ").repeat(sideLength)); // draw top line
-		for (int n = 0; n < sideLength-2; n++) { // draw two vertical lines
-			System.out.print(symbolToUse);
-			System.out.print(" ".repeat(2*sideLength-3)); // draw spaces in center
-			System.out.println(symbolToUse); // new line
+		for (int n = 0; n < sideLength; n++) { // repeat for height of square
+			System.out.println(symbolToUse.repeat(sideLength)); // draw one line of square
 		}
-		System.out.println((symbolToUse+" ").repeat(sideLength)); // draw bottom line
 	}
 }

@@ -1,4 +1,4 @@
-import java.lang.Math; // import math for area calculations
+
 public class MyTriangle extends MyShape{
 	
 	// Attributes
@@ -15,8 +15,8 @@ public class MyTriangle extends MyShape{
 		if (sideLength < 1) { // if less than 1 return -1
 			return -1;
 		} else {
-			double n = Math.sqrt(3) / 4; // use to calculate area: root3/4 * n^2
-			return n * (sideLength * sideLength); // return area of triangle
+			// java turns division of int < 1 into zero so avoid by using *0.5 instead
+			return sideLength * sideLength * 0.5; // return area of triangle
 		}
 	}
 	
@@ -25,6 +25,9 @@ public class MyTriangle extends MyShape{
 			return ;
 		}
 		// Otherwise, draw triangle
+		for (int n = 0; n <= sideLength; n++) { // repeat for height of triangle
+			System.out.println(symbolToUse.repeat(n)); // draw one line of triangle
+		}
 	}
 	
 }
