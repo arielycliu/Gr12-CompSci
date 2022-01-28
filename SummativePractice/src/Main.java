@@ -1,6 +1,7 @@
 
 public class Main {
 	public static void main(String[] args) {
+		// Testing Square
 		MySquare theSquare;
 		theSquare = new MySquare();
 		
@@ -21,6 +22,7 @@ public class Main {
 		
 		System.out.println("$$$$$$$$$$$$$$$$$$$$$$$$$$");
 		
+		// Testing Triangle
 		MyTriangle theTriangle;
 		theTriangle = new MyTriangle("A", 5);
 
@@ -43,7 +45,8 @@ public class Main {
 		System.out.println(theTriangle.calcArea());
 		
 		theTriangle.nextShape = theSquare;
-//		System.out.println(theTriangle.nextShape.calcArea());
+//		System.out.println(((MySquare) theTriangle.nextShape).calcArea()); // ask him about this
+		System.out.println(theTriangle.nextShape.calcArea());
 		System.out.println(theTriangle.nextShape.nextShape);
 	}
 }
