@@ -9,7 +9,7 @@ public class MyShape {
 	public MyShape(String symbolToUse, int sideLength) {
 		this.symbolToUse = symbolToUse;
 		this.sideLength = sideLength;
-		this.nextShape = null;
+		this.nextShape = null; // always set to null
 	}
 	
 	// Methods
