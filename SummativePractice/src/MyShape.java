@@ -11,7 +11,8 @@ public class MyShape {
 		this.sideLength = sideLength;
 		this.nextShape = null;
 	}
-
+	
+	// Methods
 	public double calcArea() {
 		if (this instanceof MySquare) { // if the shape is an instance of square
 			MySquare theSquare = (MySquare) this; // save as square, type cast
@@ -22,7 +23,5 @@ public class MyShape {
 		}
 		return 0.0;
 	}
-	
-	// Methods
 	
 }
