@@ -6,9 +6,12 @@ public class MyShape {
 	public MyShape nextShape;
 	
 	// Constructor
-	public MyShape(String symbolToUse, int sideLength, MyShape nextShape) {
+	public MyShape(String symbolToUse, int sideLength) {
 		this.symbolToUse = symbolToUse;
 		this.sideLength = sideLength;
-		this.nextShape = nextShape;
+		this.nextShape = null;
 	}
+	
+	// Methods
+	
 }
