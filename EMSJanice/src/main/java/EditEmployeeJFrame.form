@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="2"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="Title" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="employeenumber_txt" min="-2" pref="134" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="search_button" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="deductrate_txt" alignment="0" min="-2" pref="124" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="FTEyearlysalary_txt" alignment="0" max="32767" attributes="0"/>
+                          <Component id="PTEhourlywage_txt" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="PTE_radiobutton" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="FTE_radiobutton" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="edit_button" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="PTEhoursperweek_txt" min="-2" pref="119" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="PTEweeksperyear_txt" min="-2" pref="127" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="firstname_txt" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
+                          <Component id="gender_txt" alignment="0" min="-2" pref="54" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lastname_txt" min="-2" pref="72" max="-2" attributes="0"/>
+                          <Component id="worklocation_txt" min="-2" pref="86" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace pref="117" max="32767" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="Title" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="employeenumber_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="search_button" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="firstname_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lastname_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="gender_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="worklocation_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Component id="deductrate_txt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="PTE_radiobutton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="FTE_radiobutton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="PTEhourlywage_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PTEhoursperweek_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="PTEweeksperyear_txt" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <Component id="FTEyearlysalary_txt" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="edit_button" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="Title">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit Employee"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="employeenumber_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Employee Number"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="edit_button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Edit Employee"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="edit_buttonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="firstname_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="First Name"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="firstname_txtActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="lastname_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Last Name"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="deductrate_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Deduct Rate"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="PTE_radiobutton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PTE"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PTE_radiobuttonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="FTE_radiobutton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="FTE"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="FTE_radiobuttonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PTEhourlywage_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PTE hourly wage"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PTEhoursperweek_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PTE hours per week"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="PTEweeksperyear_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="PTE weeks per year"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="FTEyearlysalary_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="FTE yearly salary"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="gender_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Gender"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="worklocation_txt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Work Location"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="search_button">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Search"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="search_buttonActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>
